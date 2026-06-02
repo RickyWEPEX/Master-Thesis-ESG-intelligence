@@ -1,5 +1,5 @@
 # ===========================================================================
-# ESRS E1 Validierungsregeln (FA-2.1 Typ/Wertebereich, FA-2.2 Plausibilitaet)
+# ESRS E1-G1 Validierungsregeln (FA-2.1 Typ/Wertebereich, FA-2.2 Plausibilitaet)
 # ---------------------------------------------------------------------------
 # Konfigurierbar ohne Code-Aenderung (NFA-3.2 / H3a).
 # Regeltypen, die die Validation-Engine versteht:
@@ -94,10 +94,186 @@ rules:
     message_de: "Basisjahr liegt nicht vor dem Zieljahr."
 
   # --- Nicht-Negativitaet (generisch ueber Katalog-numeric-Felder) --------
-  # Wird zusaetzlich automatisch aus den 'validation.min' Angaben des
-  # Datenpunktkatalogs abgeleitet; hier nur als expliziter Sammelhinweis.
   - id: VR-NON-NEGATIVE
     type: catalog_bounds
     description_de: "Alle numerischen Datenpunkte respektieren min/max aus dem Katalog"
     severity: critical
     message_de: "Numerischer Wert verletzt die im Katalog definierten Grenzen."
+
+  # ===========================================================================
+  # ESRS E2: Umweltverschmutzung
+  # ===========================================================================
+
+  - id: VR-E2-WASTE-TOTAL
+    type: sum_equals
+    description_de: "Gesamtabfall = gefaehrlich + nicht-gefaehrlich"
+    components: [pollution.hazardous_waste_tonnes, pollution.non_hazardous_waste_tonnes]
+    target: resources.total_waste_tonnes
+    tolerance: 0.05
+    severity: warning
+    message_de: "Summe aus gefaehrlichem und nicht-gefaehrlichem Abfall stimmt nicht mit Gesamtabfall ueberein."
+
+  - id: VR-E2-HAZARDOUS-NON-NEGATIVE
+    type: non_negative
+    description_de: "Gefaehrliche Abfallmengen duerfen nicht negativ sein"
+    paths: [pollution.hazardous_waste_tonnes, pollution.non_hazardous_waste_tonnes]
+    severity: critical
+    message_de: "Abfallmenge ist negativ — ungueltige Angabe."
+
+  - id: VR-E2-POLLUTION-INCIDENTS
+    type: non_negative
+    description_de: "Anzahl Umweltvorfaelle darf nicht negativ sein"
+    paths: [pollution.pollution_incidents_count]
+    severity: critical
+    message_de: "Anzahl Umweltvorfaelle ist negativ — ungueltige Angabe."
+
+  # ===========================================================================
+  # ESRS E3: Wasser
+  # ===========================================================================
+
+  - id: VR-E3-WATER-RECYCLED-LE-WITHDRAWAL
+    type: relation
+    description_de: "Wiederverwendetes Wasser darf Gesamtentnahme nicht uebersteigen"
+    left: water.recycled_water_m3
+    op: le
+    right: water.total_withdrawal_m3
+    severity: critical
+    message_de: "Wiederverwendetes Wasser uebersteigt die Gesamtentnahme — rechnerisch unmoeglich."
+
+  - id: VR-E3-CONSUMPTION-LE-WITHDRAWAL
+    type: relation
+    description_de: "Wasserverbrauch darf Entnahme nicht uebersteigen"
+    left: water.total_consumption_m3
+    op: le
+    right: water.total_withdrawal_m3
+    severity: critical
+    message_de: "Wasserverbrauch ist groesser als Entnahme — rechnerisch unmoeglich."
+
+  - id: VR-E3-STRESS-AREA-RANGE
+    type: range
+    description_de: "Anteil Entnahme in Wasserstressgebieten muss zwischen 0 und 100 % liegen"
+    path: water.water_stress_area_withdrawal_percent
+    min: 0.0
+    max: 100.0
+    severity: critical
+    message_de: "Anteil Wasserentnahme in Stressgebieten liegt ausserhalb des gueltigen Bereichs (0-100%)."
+
+  # ===========================================================================
+  # ESRS E5: Ressourcennutzung
+  # ===========================================================================
+
+  - id: VR-E5-RECYCLING-RANGE
+    type: range
+    description_de: "Recyclingquote muss zwischen 0 und 100 % liegen"
+    path: resources.recycling_rate_percent
+    min: 0.0
+    max: 100.0
+    severity: critical
+    message_de: "Recyclingquote liegt ausserhalb des gueltigen Bereichs (0-100%)."
+
+  - id: VR-E5-CIRCULAR-PROCUREMENT-RANGE
+    type: range
+    description_de: "Zirkulaere Beschaffungsquote muss zwischen 0 und 100 % liegen"
+    path: resources.circular_procurement_share_percent
+    min: 0.0
+    max: 100.0
+    severity: warning
+    message_de: "Zirkulaere Beschaffungsquote liegt ausserhalb des gueltigen Bereichs (0-100%)."
+
+  # ===========================================================================
+  # ESRS S1: Eigene Belegschaft
+  # ===========================================================================
+
+  - id: VR-S1-GENDER-PAY-GAP-RANGE
+    type: range
+    description_de: "Gender Pay Gap muss zwischen -100 und 100 % liegen"
+    path: social_own_workforce.gender_pay_gap_percent
+    min: -100.0
+    max: 100.0
+    severity: critical
+    message_de: "Gender Pay Gap liegt ausserhalb des gueltigen Bereichs (-100 bis 100%)."
+
+  - id: VR-S1-INJURY-RATE-NON-NEGATIVE
+    type: non_negative
+    description_de: "Verletzungsrate darf nicht negativ sein"
+    paths: [social_own_workforce.injury_rate_per_1000_fte]
+    severity: critical
+    message_de: "Verletzungsrate ist negativ — ungueltige Angabe."
+
+  - id: VR-S1-FEMALE-LEADERSHIP-RANGE
+    type: range
+    description_de: "Frauenanteil Fuehrung muss zwischen 0 und 100 % liegen"
+    path: social_own_workforce.female_leadership_percent
+    min: 0.0
+    max: 100.0
+    severity: critical
+    message_de: "Frauenanteil in Fuehrungspositionen liegt ausserhalb des gueltigen Bereichs (0-100%)."
+
+  - id: VR-S1-LIVING-WAGE-RANGE
+    type: range
+    description_de: "Anteil Beschaeftigte unter Existenzlohn muss zwischen 0 und 100 % liegen"
+    path: social_own_workforce.employees_below_living_wage_percent
+    min: 0.0
+    max: 100.0
+    severity: warning
+    message_de: "Anteil Beschaeftigte unter Existenzlohn liegt ausserhalb des gueltigen Bereichs (0-100%)."
+
+  # ===========================================================================
+  # ESRS S2: Wertschoepfungskette
+  # ===========================================================================
+
+  - id: VR-S2-HIGH-RISK-SUPPLIERS-RANGE
+    type: range
+    description_de: "Anteil Hochrisiko-Lieferanten muss zwischen 0 und 100 % liegen"
+    path: social_value_chain.high_risk_suppliers_percent
+    min: 0.0
+    max: 100.0
+    severity: critical
+    message_de: "Anteil Hochrisiko-Lieferanten liegt ausserhalb des gueltigen Bereichs (0-100%)."
+
+  - id: VR-S2-AUDITS-LE-SUPPLIERS
+    type: relation
+    description_de: "Anzahl Lieferantenaudits darf Gesamtzahl Lieferanten nicht uebersteigen"
+    left: social_value_chain.supplier_audits_count
+    op: le
+    right: social_value_chain.active_suppliers_count
+    severity: warning
+    message_de: "Anzahl Lieferantenaudits uebersteigt die Gesamtzahl aktiver Lieferanten."
+
+  # ===========================================================================
+  # ESRS G1: Unternehmensfuehrung
+  # ===========================================================================
+
+  - id: VR-G1-ANTI-CORRUPTION-RANGE
+    type: range
+    description_de: "Antikorruptionstraining-Quote muss zwischen 0 und 100 % liegen"
+    path: governance.anti_corruption_training_percent
+    min: 0.0
+    max: 100.0
+    severity: critical
+    message_de: "Antikorruptionstraining-Quote liegt ausserhalb des gueltigen Bereichs (0-100%)."
+
+  - id: VR-G1-BOARD-INDEPENDENCE-RANGE
+    type: range
+    description_de: "Unabhaengige Aufsichtsratsmitglieder muss zwischen 0 und 100 % liegen"
+    path: governance.board_independence_percent
+    min: 0.0
+    max: 100.0
+    severity: critical
+    message_de: "Anteil unabhaengiger Aufsichtsratsmitglieder liegt ausserhalb des gueltigen Bereichs (0-100%)."
+
+  - id: VR-G1-WHISTLEBLOWING-SUBSTANTIATED-LE-TOTAL
+    type: relation
+    description_de: "Bestaetigt Whistleblowing-Meldungen duerfen Gesamtmeldungen nicht uebersteigen"
+    left: governance.whistleblowing_cases_substantiated_count
+    op: le
+    right: governance.whistleblowing_cases_count
+    severity: critical
+    message_de: "Bestaetigt Whistleblowing-Meldungen uebersteigen die Gesamtzahl der Meldungen."
+
+  - id: VR-G1-FINES-NON-NEGATIVE
+    type: non_negative
+    description_de: "Bussgelder duerfen nicht negativ sein"
+    paths: [governance.fines_total_mio_eur]
+    severity: critical
+    message_de: "Bussgelder sind negativ — ungueltige Angabe."
