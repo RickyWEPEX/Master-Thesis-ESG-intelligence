@@ -1,0 +1,153 @@
+{
+  "company": {
+    "name": "Musterbank AG",
+    "lei": "5299000SYNTHETIC00DEMO1",
+    "sector": "Financial Services",
+    "country": "DE",
+    "reporting_year": 2025,
+    "employees_fte": 450,
+    "revenue_mio_eur": 125.3,
+    "total_assets_mio_eur": 3200.0,
+    "bilanzsumme_klasse": "Klein (1-5 Mrd. EUR)"
+  },
+  "emissions": {
+    "scope_1_tco2e": 1250.5,
+    "scope_1_ets_percent": 12.0,
+    "scope_2_location_tco2e": 3420.0,
+    "scope_2_market_tco2e": 2100.0,
+    "scope_3_total_tco2e": 142000.0,
+    "scope_3_categories": {
+      "cat_1_purchased_goods": 8500.0,
+      "cat_3_fuel_energy": 620.0,
+      "cat_6_business_travel": 450.0,
+      "cat_7_employee_commuting": 320.0,
+      "cat_11_sold_products": 7110.0,
+      "cat_15_investments": 125000.0
+    },
+    "total_ghg_location_tco2e": 146670.5,
+    "total_ghg_market_tco2e": 145350.5,
+    "biogenic_co2_tco2e": 35.0
+  },
+  "energy": {
+    "total_consumption_mwh": 12500.0,
+    "fossil_mwh": 6000.0,
+    "nuclear_mwh": 875.0,
+    "renewable_mwh": 5625.0,
+    "renewable_share_percent": 45.0,
+    "energy_intensity_mwh_per_mio_eur": 99.76,
+    "own_renewable_generation_mwh": 480.0,
+    "energy_savings_mwh": 310.0
+  },
+  "targets": {
+    "base_year": 2019,
+    "target_year": 2030,
+    "reduction_target_percent": 50.0,
+    "net_zero_year": 2040,
+    "scope_1_2_reduction_vs_base_percent": 18.5
+  },
+  "intensity": {
+    "ghg_intensity_per_revenue": 1160.02,
+    "ghg_intensity_per_fte": 323.0,
+    "financed_emissions_per_mio_eur_aum": 39.06
+  },
+  "removals": {
+    "ghg_removals_tco2e": 500.0,
+    "carbon_credits_tco2e": 1200.0
+  },
+  "carbon_pricing": {
+    "internal_carbon_price_eur_per_tco2e": 85.0
+  },
+  "financial_effects": {
+    "assets_at_physical_risk_mio_eur": 18.5,
+    "assets_at_physical_risk_percent": 7.2,
+    "green_asset_ratio_percent": 12.4,
+    "transition_risk_exposure_mio_eur": 145.0,
+    "green_financing_volume_mio_eur": 89.5
+  },
+  "narratives": {
+    "transition_plan": "Die Musterbank AG verfolgt einen Transitionsplan mit dem Ziel der Netto-Null-Emissionen bis 2040. Der Plan umfasst Dekarbonisierungshebel im eigenen Betrieb (Gebaeudeenergie, Fuhrpark) sowie die schrittweise Dekarbonisierung des Kredit- und Investitionsportfolios. Die Kompatibilitaet mit dem 1,5-Grad-Ziel des Pariser Abkommens wird jaehrlich ueberprueft.",
+    "climate_policies": "Die Klimastrategie ist in der konzernweiten Nachhaltigkeitsrichtlinie verankert und vom Vorstand verabschiedet. Sie definiert Verantwortlichkeiten, Sektor-Ausschlusskriterien und Engagement-Prozesse fuer Portfoliounternehmen.",
+    "climate_actions": "Massnahmen umfassen die Umstellung auf 100% erneuerbaren Strombezug bis 2027, ein internes CO2-Bepreisungssystem (85 EUR/tCO2e) zur Investitionssteuerung sowie ein Green-Financing-Programm mit bisher 89,5 Mio. EUR Volumen.",
+    "physical_risks": "Physische Klimarisiken betreffen vor allem Immobiliensicherheiten in hochwassergefaehrdeten Regionen sowie operative Standorte. Eine Szenarioanalyse auf Basis eines High-Emission-Szenarios (RCP 8.5) wurde durchgefuehrt. 7,2% der Vermoegenswerte gelten als physisch risikoexponiert.",
+    "transition_risks": "Transitorische Risiken entstehen aus regulatorischen Verschaerfungen (CSRD, MaRisk-Novelle 9, EU-Taxonomie), CO2-Bepreisung und veraenderten Marktpraeferenzen. Das Transitionsrisikoexpositionsvolumen betraegt 145 Mio. EUR.",
+    "climate_opportunities": "Chancen ergeben sich aus der Finanzierung der Transformation: gruene Anleihen, Transformationskredite und Beratungsdienstleistungen fuer Firmenkunden auf dem Weg zur Klimaneutralitaet. Die Green Asset Ratio betraegt aktuell 12,4%."
+  },
+  "pollution": {
+    "air_emissions_nox_kg": 185.0,
+    "air_emissions_sox_kg": 42.0,
+    "air_emissions_pm25_kg": 18.5,
+    "hazardous_waste_tonnes": 0.8,
+    "non_hazardous_waste_tonnes": 11.7,
+    "wastewater_discharged_m3": 1850.0,
+    "pollution_incidents_count": 0,
+    "financed_pollution_exposure_percent": 3.2
+  },
+  "water": {
+    "total_consumption_m3": 4500.0,
+    "total_withdrawal_m3": 4820.0,
+    "recycled_water_m3": 320.0,
+    "water_intensity_m3_per_fte": 10.0,
+    "water_stress_area_withdrawal_percent": 4.1,
+    "financed_water_intensive_exposure_percent": 6.8
+  },
+  "biodiversity": {
+    "land_use_m2": 2800.0,
+    "sealed_surface_m2": 1950.0,
+    "operations_in_protected_areas": false,
+    "financed_sensitive_area_exposure_percent": 2.1,
+    "biodiversity_net_impact_score": 0.12
+  },
+  "resources": {
+    "total_waste_tonnes": 12.5,
+    "recycling_rate_percent": 68.0,
+    "paper_consumption_kg_per_fte": 24.0,
+    "it_equipment_refurbished_percent": 31.0,
+    "circular_procurement_share_percent": 22.0,
+    "financed_resource_intensive_exposure_percent": 8.5
+  },
+  "social_own_workforce": {
+    "gender_pay_gap_percent": 8.5,
+    "injury_rate_per_1000_fte": 2.1,
+    "training_hours_per_fte": 32.0,
+    "turnover_rate_percent": 9.2,
+    "female_leadership_percent": 35.0,
+    "employee_engagement_score": 72,
+    "collective_bargaining_coverage_percent": 88.0,
+    "employees_below_living_wage_percent": 0.0,
+    "disability_inclusion_percent": 4.2
+  },
+  "social_value_chain": {
+    "active_suppliers_count": 148,
+    "supplier_audits_count": 18,
+    "high_risk_suppliers_percent": 8.5,
+    "suppliers_with_code_of_conduct_percent": 91.0,
+    "human_rights_violations_in_chain_count": 0,
+    "financed_supply_chain_risk_exposure_percent": 12.3
+  },
+  "communities": {
+    "community_investment_mio_eur": 0.85,
+    "complaints_received_count": 3,
+    "complaints_resolved_percent": 100.0,
+    "local_procurement_percent": 62.0,
+    "social_finance_volume_mio_eur": 14.5
+  },
+  "consumers": {
+    "customer_complaints_per_1000": 4.2,
+    "data_breaches_count": 0,
+    "product_mis_selling_cases_count": 1,
+    "customer_satisfaction_score": 78,
+    "vulnerable_customer_share_percent": 11.0,
+    "financial_inclusion_products_count": 3
+  },
+  "governance": {
+    "compliance_violations_count": 0,
+    "anti_corruption_training_percent": 98.5,
+    "whistleblowing_cases_count": 1,
+    "whistleblowing_cases_substantiated_count": 0,
+    "board_independence_percent": 67.0,
+    "women_on_board_percent": 33.0,
+    "fines_total_mio_eur": 0.0,
+    "tax_transparency_published": true,
+    "lobbying_expenses_mio_eur": 0.12
+  }
+}

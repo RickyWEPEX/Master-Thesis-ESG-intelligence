@@ -1,0 +1,73 @@
+# ===========================================================================
+# ESRS S2 (Arbeitskraefte in der Wertschoepfungskette) - Datenpunktkatalog
+# ---------------------------------------------------------------------------
+# Quelle: Amended ESRS Exposure Draft, Juli 2025 (EFRAG), DR S2-1 bis S2-5
+# ===========================================================================
+
+metadata:
+  standard: "ESRS S2"
+  title: "Workers in the Value Chain / Arbeitskraefte in der Wertschoepfungskette"
+  source: "Amended ESRS Exposure Draft (July 2025), EFRAG"
+  catalog_version: "0.1.0"
+
+datapoints:
+
+  - id: S2-DP-001
+    dr: S2-4
+    name: "Active suppliers (count)"
+    name_de: "Anzahl aktiver Lieferanten"
+    category: supply_chain
+    datatype: integer
+    unit: Anzahl
+    mandatory: false
+    value_path: social_value_chain.active_suppliers_count
+
+  - id: S2-DP-002
+    dr: S2-4
+    name: "Supplier audits conducted"
+    name_de: "Durchgefuehrte Lieferantenaudits"
+    category: supply_chain
+    datatype: integer
+    unit: Anzahl
+    mandatory: true
+    value_path: social_value_chain.supplier_audits_count
+
+  - id: S2-DP-003
+    dr: S2-4
+    name: "High-risk suppliers share"
+    name_de: "Anteil Hochrisikolieferanten"
+    category: supply_chain_risk
+    datatype: percentage
+    unit: "%"
+    mandatory: true
+    value_path: social_value_chain.high_risk_suppliers_percent
+
+  - id: S2-DP-004
+    dr: S2-2
+    name: "Suppliers with code of conduct"
+    name_de: "Lieferanten mit Verhaltenskodex"
+    category: supply_chain
+    datatype: percentage
+    unit: "%"
+    mandatory: true
+    value_path: social_value_chain.suppliers_with_code_of_conduct_percent
+
+  - id: S2-DP-005
+    dr: S2-4
+    name: "Human rights violations in supply chain"
+    name_de: "Menschenrechtsverletzungen in der Lieferkette"
+    category: human_rights
+    datatype: integer
+    unit: Anzahl
+    mandatory: true
+    value_path: social_value_chain.human_rights_violations_in_chain_count
+
+  - id: S2-DP-006
+    dr: S2-5
+    name: "Financed supply chain risk exposure"
+    name_de: "Finanziertes Lieferkettenrisikoengagement"
+    category: financed
+    datatype: percentage
+    unit: "%"
+    mandatory: false
+    value_path: social_value_chain.financed_supply_chain_risk_exposure_percent

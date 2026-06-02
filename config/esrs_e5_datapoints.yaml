@@ -1,0 +1,73 @@
+# ===========================================================================
+# ESRS E5 (Ressourcennutzung und Kreislaufwirtschaft) - Datenpunktkatalog
+# ---------------------------------------------------------------------------
+# Quelle: Amended ESRS Exposure Draft, Juli 2025 (EFRAG), DR E5-1 bis E5-5
+# ===========================================================================
+
+metadata:
+  standard: "ESRS E5"
+  title: "Resource Use and Circular Economy / Ressourcennutzung"
+  source: "Amended ESRS Exposure Draft (July 2025), EFRAG"
+  catalog_version: "0.1.0"
+
+datapoints:
+
+  - id: E5-DP-001
+    dr: E5-4
+    name: "Total waste generated"
+    name_de: "Gesamtabfallmenge"
+    category: waste
+    datatype: numeric
+    unit: t
+    mandatory: true
+    value_path: resources.total_waste_tonnes
+
+  - id: E5-DP-002
+    dr: E5-4
+    name: "Recycling rate"
+    name_de: "Recyclingquote"
+    category: circular
+    datatype: percentage
+    unit: "%"
+    mandatory: true
+    value_path: resources.recycling_rate_percent
+
+  - id: E5-DP-003
+    dr: E5-4
+    name: "Paper consumption per FTE"
+    name_de: "Papierverbrauch je Mitarbeiter"
+    category: resource_inflows
+    datatype: numeric
+    unit: kg/FTE
+    mandatory: false
+    value_path: resources.paper_consumption_kg_per_fte
+
+  - id: E5-DP-004
+    dr: E5-4
+    name: "IT equipment refurbished share"
+    name_de: "Anteil aufbereiteter IT-Geraete"
+    category: circular
+    datatype: percentage
+    unit: "%"
+    mandatory: false
+    value_path: resources.it_equipment_refurbished_percent
+
+  - id: E5-DP-005
+    dr: E5-4
+    name: "Circular procurement share"
+    name_de: "Anteil zirkulaerer Beschaffung"
+    category: circular
+    datatype: percentage
+    unit: "%"
+    mandatory: false
+    value_path: resources.circular_procurement_share_percent
+
+  - id: E5-DP-006
+    dr: E5-5
+    name: "Financed resource-intensive exposure"
+    name_de: "Finanziertes ressourcenintensives Engagement (Portfolio)"
+    category: financed
+    datatype: percentage
+    unit: "%"
+    mandatory: false
+    value_path: resources.financed_resource_intensive_exposure_percent

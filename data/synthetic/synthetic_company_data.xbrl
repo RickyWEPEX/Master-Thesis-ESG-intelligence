@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Synthetische XBRL-Instanz (vereinfacht) im Stil der ESRS-Taxonomie (EFRAG).
+  Demonstriert maschinenlesbaren Import gemaess NFA-5.2 / FA-1.1.
+  Konzeptnamen folgen der ESRS Set 1 XBRL Taxonomy (lokale Namen).
+  Hinweis: synthetische Daten, nur fuer Demonstrationszwecke.
+-->
+<xbrli:xbrl
+    xmlns:xbrli="http://www.xbrl.org/2003/instance"
+    xmlns:esrs="https://xbrl.efrag.org/taxonomy/esrs/2024-12-31"
+    xmlns:iso4217="http://www.xbrl.org/2003/iso4217"
+    xmlns:xbrldi="http://xbrl.org/2006/xbrldi">
+
+  <xbrli:context id="FY2025">
+    <xbrli:entity>
+      <xbrli:identifier scheme="http://standards.iso.org/iso/17442">5299000SYNTHETIC00DEMO1</xbrli:identifier>
+    </xbrli:entity>
+    <xbrli:period>
+      <xbrli:startDate>2025-01-01</xbrli:startDate>
+      <xbrli:endDate>2025-12-31</xbrli:endDate>
+    </xbrli:period>
+  </xbrli:context>
+
+  <xbrli:unit id="tCO2e">
+    <xbrli:measure>esrs:tCO2e</xbrli:measure>
+  </xbrli:unit>
+  <xbrli:unit id="MWh">
+    <xbrli:measure>esrs:MWh</xbrli:measure>
+  </xbrli:unit>
+  <xbrli:unit id="pure">
+    <xbrli:measure>xbrli:pure</xbrli:measure>
+  </xbrli:unit>
+  <xbrli:unit id="EUR">
+    <xbrli:measure>iso4217:EUR</xbrli:measure>
+  </xbrli:unit>
+
+  <!-- Stammdaten -->
+  <esrs:EntityRegisteredName contextRef="FY2025">Synthetik XBRL Bank AG</esrs:EntityRegisteredName>
+  <esrs:IdentifierOfEntity contextRef="FY2025">5299000SYNTHETIC00DEMO1</esrs:IdentifierOfEntity>
+
+  <!-- E1-6 THG-Emissionen -->
+  <esrs:GrossScope1GreenhouseGasEmissions contextRef="FY2025" unitRef="tCO2e" decimals="1">1430.0</esrs:GrossScope1GreenhouseGasEmissions>
+  <esrs:PercentageScope1EmissionsRegulatedEmissionTradingSchemes contextRef="FY2025" unitRef="pure" decimals="1">15.0</esrs:PercentageScope1EmissionsRegulatedEmissionTradingSchemes>
+  <esrs:GrossLocationBasedScope2GreenhouseGasEmissions contextRef="FY2025" unitRef="tCO2e" decimals="1">3850.0</esrs:GrossLocationBasedScope2GreenhouseGasEmissions>
+  <esrs:GrossMarketBasedScope2GreenhouseGasEmissions contextRef="FY2025" unitRef="tCO2e" decimals="1">2450.0</esrs:GrossMarketBasedScope2GreenhouseGasEmissions>
+  <esrs:GrossScope3GreenhouseGasEmissions contextRef="FY2025" unitRef="tCO2e" decimals="0">156000.0</esrs:GrossScope3GreenhouseGasEmissions>
+  <esrs:TotalLocationBasedGreenhouseGasEmissions contextRef="FY2025" unitRef="tCO2e" decimals="1">161280.0</esrs:TotalLocationBasedGreenhouseGasEmissions>
+  <esrs:TotalMarketBasedGreenhouseGasEmissions contextRef="FY2025" unitRef="tCO2e" decimals="1">159880.0</esrs:TotalMarketBasedGreenhouseGasEmissions>
+  <esrs:BiogenicCarbonDioxideEmissions contextRef="FY2025" unitRef="tCO2e" decimals="1">42.0</esrs:BiogenicCarbonDioxideEmissions>
+
+  <!-- E1-4 Energie -->
+  <esrs:TotalEnergyConsumption contextRef="FY2025" unitRef="MWh" decimals="0">13800.0</esrs:TotalEnergyConsumption>
+  <esrs:EnergyConsumptionFromFossilSources contextRef="FY2025" unitRef="MWh" decimals="0">7200.0</esrs:EnergyConsumptionFromFossilSources>
+  <esrs:EnergyConsumptionFromNuclearSources contextRef="FY2025" unitRef="MWh" decimals="0">920.0</esrs:EnergyConsumptionFromNuclearSources>
+  <esrs:EnergyConsumptionFromRenewableSources contextRef="FY2025" unitRef="MWh" decimals="0">5680.0</esrs:EnergyConsumptionFromRenewableSources>
+  <esrs:ShareOfRenewableEnergy contextRef="FY2025" unitRef="pure" decimals="1">41.2</esrs:ShareOfRenewableEnergy>
+  <esrs:EnergyIntensityPerNetRevenue contextRef="FY2025" unitRef="pure" decimals="2">110.40</esrs:EnergyIntensityPerNetRevenue>
+
+  <!-- E1-5 Ziele -->
+  <esrs:GreenhouseGasEmissionReductionTargetBaseYear contextRef="FY2025" unitRef="pure" decimals="0">2020</esrs:GreenhouseGasEmissionReductionTargetBaseYear>
+  <esrs:GreenhouseGasEmissionReductionTargetYear contextRef="FY2025" unitRef="pure" decimals="0">2030</esrs:GreenhouseGasEmissionReductionTargetYear>
+  <esrs:GreenhouseGasEmissionReductionTargetPercentage contextRef="FY2025" unitRef="pure" decimals="1">42.0</esrs:GreenhouseGasEmissionReductionTargetPercentage>
+  <esrs:NetZeroTargetYear contextRef="FY2025" unitRef="pure" decimals="0">2045</esrs:NetZeroTargetYear>
+
+  <!-- E1-6 Intensitaet -->
+  <esrs:GreenhouseGasIntensityPerNetRevenue contextRef="FY2025" unitRef="pure" decimals="2">1276.50</esrs:GreenhouseGasIntensityPerNetRevenue>
+
+  <!-- E1-9 Entnahmen -->
+  <esrs:GreenhouseGasRemovals contextRef="FY2025" unitRef="tCO2e" decimals="0">350.0</esrs:GreenhouseGasRemovals>
+  <esrs:CarbonCreditsPurchasedCancelled contextRef="FY2025" unitRef="tCO2e" decimals="0">900.0</esrs:CarbonCreditsPurchasedCancelled>
+
+  <!-- E1-10 Carbon Pricing -->
+  <esrs:InternalCarbonPriceApplied contextRef="FY2025" unitRef="EUR" decimals="0">60.0</esrs:InternalCarbonPriceApplied>
+
+  <!-- E1-11 Finanzielle Effekte -->
+  <esrs:AssetsAtMaterialPhysicalRiskMonetary contextRef="FY2025" unitRef="EUR" decimals="1">24.0</esrs:AssetsAtMaterialPhysicalRiskMonetary>
+  <esrs:AssetsAtMaterialPhysicalRiskPercentage contextRef="FY2025" unitRef="pure" decimals="1">9.5</esrs:AssetsAtMaterialPhysicalRiskPercentage>
+  <esrs:GreenAssetRatio contextRef="FY2025" unitRef="pure" decimals="1">10.8</esrs:GreenAssetRatio>
+
+</xbrli:xbrl>

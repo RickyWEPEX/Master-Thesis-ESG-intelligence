@@ -1,0 +1,18 @@
+{
+  "_meta": {
+    "description": "Erwartete Validierungstreffer fuer data/synthetic/synthetic_company_data_errors.json. Grundlage fuer die Fehlererkennungsrate (FA-2 / H2b: >=95% erkannt, FP <=10%).",
+    "dataset": "synthetic_company_data_errors.json"
+  },
+  "expected_issues": [
+    {"check": "catalog_bounds", "path": "emissions.scope_1_tco2e", "reason_de": "Negativer Emissionswert (verletzt min=0)"},
+    {"check": "catalog_bounds", "path": "targets.reduction_target_percent", "reason_de": "Prozentwert > 100 (verletzt max=100)"},
+    {"check": "VR-TARGET-YEARS", "path": "targets.base_year", "reason_de": "Basisjahr (2035) nach Zieljahr (2030)"},
+    {"check": "VR-ENERGY-SUM", "path": "energy.total_consumption_mwh", "reason_de": "Energie-Mix summiert sich nicht zum Gesamtverbrauch"},
+    {"check": "VR-RENEWABLE-SHARE", "path": "energy.renewable_share_percent", "reason_de": "Angegebener erneuerbarer Anteil inkonsistent zu MWh"},
+    {"check": "VR-SCOPE3-CATEGORIES", "path": "emissions.scope_3_total_tco2e", "reason_de": "Summe Scope-3-Kategorien uebersteigt Scope-3-Gesamt"},
+    {"check": "VR-GHG-TOTAL-MARKET", "path": "emissions.total_ghg_market_tco2e", "reason_de": "Scope 1+2(market)+3 stimmt nicht mit Gesamt-THG (market) ueberein"}
+  ],
+  "expected_completeness_gaps": [
+    {"datapoint_id": "E1-DP-030", "path": "narratives.climate_policies", "reason_de": "Pflicht-Narrativ E1-2 fehlt"}
+  ]
+}

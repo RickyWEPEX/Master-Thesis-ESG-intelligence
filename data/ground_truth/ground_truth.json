@@ -1,0 +1,43 @@
+{
+  "_meta": {
+    "description": "Annotierter Referenzdatensatz (Gold Standard) fuer die Extraktions-Evaluation (H2a). Bezieht sich auf data/synthetic/synthetic_company_data.json.",
+    "dataset": "synthetic_company_data.json",
+    "numeric_tolerance": 0.01
+  },
+  "datapoints": {
+    "E1-DP-001": {"present": true, "value": 1250.5, "unit": "tCO2e"},
+    "E1-DP-002": {"present": true, "value": 12.0, "unit": "%"},
+    "E1-DP-003": {"present": true, "value": 3420.0, "unit": "tCO2e"},
+    "E1-DP-004": {"present": true, "value": 2100.0, "unit": "tCO2e"},
+    "E1-DP-005": {"present": true, "value": 142000.0, "unit": "tCO2e"},
+    "E1-DP-006": {"present": true, "value": 146670.5, "unit": "tCO2e"},
+    "E1-DP-007": {"present": true, "value": 145350.5, "unit": "tCO2e"},
+    "E1-DP-008": {"present": true, "value": 35.0, "unit": "tCO2e"},
+    "E1-DP-009": {"present": true, "value": 8500.0, "unit": "tCO2e"},
+    "E1-DP-010": {"present": true, "value": 450.0, "unit": "tCO2e"},
+    "E1-DP-011": {"present": true, "value": 320.0, "unit": "tCO2e"},
+    "E1-DP-012": {"present": true, "value": 125000.0, "unit": "tCO2e"},
+    "E1-DP-013": {"present": true, "value": 12500.0, "unit": "MWh"},
+    "E1-DP-014": {"present": true, "value": 6000.0, "unit": "MWh"},
+    "E1-DP-015": {"present": true, "value": 875.0, "unit": "MWh"},
+    "E1-DP-016": {"present": true, "value": 5625.0, "unit": "MWh"},
+    "E1-DP-017": {"present": true, "value": 45.0, "unit": "%"},
+    "E1-DP-018": {"present": true, "value": 99.76, "unit": "MWh/Mio EUR"},
+    "E1-DP-019": {"present": true, "value": 2019, "unit": "year"},
+    "E1-DP-020": {"present": true, "value": 2030, "unit": "year"},
+    "E1-DP-021": {"present": true, "value": 50.0, "unit": "%"},
+    "E1-DP-022": {"present": true, "value": 2040, "unit": "year"},
+    "E1-DP-023": {"present": true, "value": 1160.02, "unit": "tCO2e/Mio EUR"},
+    "E1-DP-024": {"present": true, "value": 500.0, "unit": "tCO2e"},
+    "E1-DP-025": {"present": true, "value": 1200.0, "unit": "tCO2e"},
+    "E1-DP-026": {"present": true, "value": 85.0, "unit": "EUR/tCO2e"},
+    "E1-DP-027": {"present": true, "value": 18.5, "unit": "Mio EUR"},
+    "E1-DP-028": {"present": true, "value": 7.2, "unit": "%"},
+    "E1-DP-029": {"present": true, "value": "NARRATIVE", "unit": "text"},
+    "E1-DP-030": {"present": true, "value": "NARRATIVE", "unit": "text"},
+    "E1-DP-031": {"present": true, "value": "NARRATIVE", "unit": "text"},
+    "E1-DP-032": {"present": true, "value": "NARRATIVE", "unit": "text"},
+    "E1-DP-033": {"present": true, "value": "NARRATIVE", "unit": "text"},
+    "E1-DP-034": {"present": true, "value": "NARRATIVE", "unit": "text"}
+  }
+}

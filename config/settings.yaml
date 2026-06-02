@@ -1,0 +1,39 @@
+# Systemkonfiguration des KI-Agenten-Frameworks (NFA-3.2: steuerbar ohne Code-Aenderung)
+
+run:
+  # Extraktions-Backend: "deterministic" (regelbasiert, ohne API, reproduzierbar)
+  #                      "claude" (LLM-gestuetzt fuer unstrukturierte Quellen)
+  extraction_backend: deterministic
+  language: de            # Berichtssprache: de | en
+
+paths:
+  # Primaerkatalog (E1) bleibt fuer Rueckwaertskompatibilitaet erhalten
+  datapoint_catalog: config/esrs_e1_datapoints.yaml
+  # Alle Standard-Kataloge (werden zusaetzlich geladen)
+  additional_catalogs:
+    - config/esrs_e2_datapoints.yaml
+    - config/esrs_e3_datapoints.yaml
+    - config/esrs_e4_datapoints.yaml
+    - config/esrs_e5_datapoints.yaml
+    - config/esrs_s1_datapoints.yaml
+    - config/esrs_s2_datapoints.yaml
+    - config/esrs_s3_datapoints.yaml
+    - config/esrs_s4_datapoints.yaml
+    - config/esrs_g1_datapoints.yaml
+  validation_rules: config/validation_rules.yaml
+  report_template: config/report_template.md
+  output_dir: output
+
+confidence:
+  # Human-in-the-Loop Schwellenwert (FA-5.3 / NFA-1.2). Standard 0.75; konfigurierbar.
+  review_threshold: 0.75
+
+llm:
+  provider: anthropic
+  model: claude-sonnet-4-6        # austauschbar (NFA-3.1)
+  max_tokens: 2000
+  temperature: 0.2
+  # API-Key wird aus Umgebungsvariable ANTHROPIC_API_KEY gelesen (QA-5.3: keine Hardcoded Credentials)
+
+evaluation:
+  ground_truth: data/ground_truth/ground_truth.json

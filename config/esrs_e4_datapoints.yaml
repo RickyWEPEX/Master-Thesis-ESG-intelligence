@@ -1,0 +1,63 @@
+# ===========================================================================
+# ESRS E4 (Biodiversitaet und Oekosysteme) - Datenpunktkatalog
+# ---------------------------------------------------------------------------
+# Quelle: Amended ESRS Exposure Draft, Juli 2025 (EFRAG), DR E4-1 bis E4-5
+# ===========================================================================
+
+metadata:
+  standard: "ESRS E4"
+  title: "Biodiversity and Ecosystems / Biodiversitaet und Oekosysteme"
+  source: "Amended ESRS Exposure Draft (July 2025), EFRAG"
+  catalog_version: "0.1.0"
+
+datapoints:
+
+  - id: E4-DP-001
+    dr: E4-5
+    name: "Total land use"
+    name_de: "Gesamtflaechennutzung"
+    category: land_use
+    datatype: numeric
+    unit: m2
+    mandatory: true
+    value_path: biodiversity.land_use_m2
+
+  - id: E4-DP-002
+    dr: E4-5
+    name: "Sealed surface area"
+    name_de: "Versiegelte Flaeche"
+    category: land_use
+    datatype: numeric
+    unit: m2
+    mandatory: false
+    value_path: biodiversity.sealed_surface_m2
+
+  - id: E4-DP-003
+    dr: E4-5
+    name: "Operations in or near protected areas"
+    name_de: "Aktivitaeten in/nahe Schutzgebieten"
+    category: protected_areas
+    datatype: narrative
+    unit: bool
+    mandatory: true
+    value_path: biodiversity.operations_in_protected_areas
+
+  - id: E4-DP-004
+    dr: E4-5
+    name: "Financed sensitive area exposure"
+    name_de: "Finanziertes Schutzgebiets-Engagement (Portfolio)"
+    category: financed
+    datatype: percentage
+    unit: "%"
+    mandatory: false
+    value_path: biodiversity.financed_sensitive_area_exposure_percent
+
+  - id: E4-DP-005
+    dr: E4-5
+    name: "Biodiversity net impact score"
+    name_de: "Biodiversitaets-Nettowirkungsscore"
+    category: biodiversity_state
+    datatype: numeric
+    unit: Score
+    mandatory: false
+    value_path: biodiversity.biodiversity_net_impact_score

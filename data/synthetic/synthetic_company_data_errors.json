@@ -1,0 +1,63 @@
+{
+  "_comment": "Variante mit 7 absichtlich eingebauten Validierungsfehlern + 1 fehlender Pflichtangabe. Erwartete Treffer in data/ground_truth/validation_ground_truth.json.",
+  "company": {
+    "name": "Musterbank AG (Fehler-Variante)",
+    "lei": "5299000SYNTHETIC00DEMO1",
+    "sector": "Financial Services",
+    "country": "DE",
+    "reporting_year": 2025,
+    "employees_fte": 450,
+    "revenue_mio_eur": 125.3
+  },
+  "emissions": {
+    "scope_1_tco2e": -1250.5,
+    "scope_1_ets_percent": 12.0,
+    "scope_2_location_tco2e": 3420.0,
+    "scope_2_market_tco2e": 2100.0,
+    "scope_3_total_tco2e": 100000.0,
+    "scope_3_categories": {
+      "cat_1_purchased_goods": 8500.0,
+      "cat_6_business_travel": 450.0,
+      "cat_7_employee_commuting": 320.0,
+      "cat_15_investments": 125000.0
+    },
+    "total_ghg_location_tco2e": 102169.5,
+    "total_ghg_market_tco2e": 90000.0,
+    "biogenic_co2_tco2e": 35.0
+  },
+  "energy": {
+    "total_consumption_mwh": 14000.0,
+    "fossil_mwh": 6000.0,
+    "nuclear_mwh": 875.0,
+    "renewable_mwh": 5625.0,
+    "renewable_share_percent": 60.0,
+    "energy_intensity_mwh_per_mio_eur": 99.76
+  },
+  "targets": {
+    "base_year": 2035,
+    "target_year": 2030,
+    "reduction_target_percent": 150.0,
+    "net_zero_year": 2040
+  },
+  "intensity": {
+    "ghg_intensity_per_revenue": 718.28
+  },
+  "removals": {
+    "ghg_removals_tco2e": 500.0,
+    "carbon_credits_tco2e": 1200.0
+  },
+  "carbon_pricing": {
+    "internal_carbon_price_eur_per_tco2e": 85.0
+  },
+  "financial_effects": {
+    "assets_at_physical_risk_mio_eur": 18.5,
+    "assets_at_physical_risk_percent": 7.2
+  },
+  "narratives": {
+    "transition_plan": "Die Musterbank AG verfolgt einen Transitionsplan mit dem Ziel der Netto-Null-Emissionen bis 2040.",
+    "climate_actions": "Massnahmen umfassen die Umstellung auf erneuerbaren Strombezug und ein internes CO2-Bepreisungssystem.",
+    "physical_risks": "Physische Klimarisiken betreffen Immobiliensicherheiten in hochwassergefaehrdeten Regionen.",
+    "transition_risks": "Transitorische Risiken entstehen aus regulatorischen Verschaerfungen und CO2-Bepreisung.",
+    "climate_opportunities": "Chancen ergeben sich aus der Finanzierung der Transformation."
+  }
+}

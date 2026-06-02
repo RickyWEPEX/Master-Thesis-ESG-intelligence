@@ -1,0 +1,103 @@
+# ===========================================================================
+# ESRS E1 Validierungsregeln (FA-2.1 Typ/Wertebereich, FA-2.2 Plausibilitaet)
+# ---------------------------------------------------------------------------
+# Konfigurierbar ohne Code-Aenderung (NFA-3.2 / H3a).
+# Regeltypen, die die Validation-Engine versteht:
+#   non_negative   : Wert >= 0
+#   range          : min <= Wert <= max
+#   sum_equals     : sum(components) ~= target (rel. Toleranz tolerance)
+#   relation       : left <op> right   (op: lt, le, gt, ge)
+#   derived_equals : target ~= expr(components)  (expr: ratio | sum)
+# severity: critical | warning | info
+# ===========================================================================
+
+metadata:
+  ruleset_version: "0.1.0"
+  default_tolerance: 0.02   # 2% relative Toleranz fuer Summen-/Verhaeltnischecks
+
+rules:
+
+  # --- Plausibilitaet: Energie-Mix summiert sich zum Gesamtverbrauch -------
+  - id: VR-ENERGY-SUM
+    type: sum_equals
+    description_de: "Summe aus fossil + nuklear + erneuerbar entspricht Gesamtenergieverbrauch"
+    components: [energy.fossil_mwh, energy.nuclear_mwh, energy.renewable_mwh]
+    target: energy.total_consumption_mwh
+    tolerance: 0.02
+    severity: critical
+    message_de: "Energie-Mix (fossil+nuklear+erneuerbar) stimmt nicht mit Gesamtverbrauch ueberein."
+
+  # --- Plausibilitaet: erneuerbarer Anteil konsistent mit MWh -------------
+  - id: VR-RENEWABLE-SHARE
+    type: derived_equals
+    description_de: "Anteil erneuerbarer Energie = renewable_mwh / total_consumption_mwh * 100"
+    expr: ratio_percent
+    numerator: energy.renewable_mwh
+    denominator: energy.total_consumption_mwh
+    target: energy.renewable_share_percent
+    tolerance: 0.05
+    severity: warning
+    message_de: "Angegebener erneuerbarer Anteil weicht vom berechneten Verhaeltnis ab."
+
+  # --- Plausibilitaet: Gesamt-THG (marktbasiert) = S1 + S2(market) + S3 ---
+  - id: VR-GHG-TOTAL-MARKET
+    type: sum_equals
+    description_de: "Gesamte THG (marktbasiert) = Scope 1 + Scope 2 (market) + Scope 3"
+    components: [emissions.scope_1_tco2e, emissions.scope_2_market_tco2e, emissions.scope_3_total_tco2e]
+    target: emissions.total_ghg_market_tco2e
+    tolerance: 0.02
+    severity: critical
+    message_de: "Summe Scope 1+2(market)+3 stimmt nicht mit Gesamt-THG (marktbasiert) ueberein."
+
+  # --- Plausibilitaet: Gesamt-THG (standortbasiert) = S1 + S2(loc) + S3 ---
+  - id: VR-GHG-TOTAL-LOCATION
+    type: sum_equals
+    description_de: "Gesamte THG (standortbasiert) = Scope 1 + Scope 2 (location) + Scope 3"
+    components: [emissions.scope_1_tco2e, emissions.scope_2_location_tco2e, emissions.scope_3_total_tco2e]
+    target: emissions.total_ghg_location_tco2e
+    tolerance: 0.02
+    severity: critical
+    message_de: "Summe Scope 1+2(location)+3 stimmt nicht mit Gesamt-THG (standortbasiert) ueberein."
+
+  # --- Plausibilitaet: Scope-3-Kategorien <= Scope-3-Gesamt ---------------
+  - id: VR-SCOPE3-CATEGORIES
+    type: relation
+    description_de: "Summe ausgewiesener Scope-3-Kategorien darf Scope-3-Gesamt nicht uebersteigen"
+    left_sum: [emissions.scope_3_categories.cat_1_purchased_goods, emissions.scope_3_categories.cat_6_business_travel, emissions.scope_3_categories.cat_7_employee_commuting, emissions.scope_3_categories.cat_15_investments]
+    op: le
+    right: emissions.scope_3_total_tco2e
+    report_path: emissions.scope_3_total_tco2e
+    tolerance: 0.02
+    severity: warning
+    message_de: "Summe der ausgewiesenen Scope-3-Kategorien uebersteigt den Scope-3-Gesamtwert."
+
+  # --- Konsistenz: THG-Intensitaet = Gesamt-THG(market) / Umsatz ----------
+  - id: VR-GHG-INTENSITY
+    type: derived_equals
+    description_de: "THG-Intensitaet = total_ghg_market / revenue_mio_eur"
+    expr: ratio
+    numerator: emissions.total_ghg_market_tco2e
+    denominator: company.revenue_mio_eur
+    target: intensity.ghg_intensity_per_revenue
+    tolerance: 0.05
+    severity: warning
+    message_de: "Angegebene THG-Intensitaet weicht vom berechneten Wert ab."
+
+  # --- Zeitliche Konsistenz: Basisjahr < Zieljahr -------------------------
+  - id: VR-TARGET-YEARS
+    type: relation
+    description_de: "Basisjahr muss vor dem Zieljahr liegen"
+    left: targets.base_year
+    op: lt
+    right: targets.target_year
+    severity: critical
+    message_de: "Basisjahr liegt nicht vor dem Zieljahr."
+
+  # --- Nicht-Negativitaet (generisch ueber Katalog-numeric-Felder) --------
+  # Wird zusaetzlich automatisch aus den 'validation.min' Angaben des
+  # Datenpunktkatalogs abgeleitet; hier nur als expliziter Sammelhinweis.
+  - id: VR-NON-NEGATIVE
+    type: catalog_bounds
+    description_de: "Alle numerischen Datenpunkte respektieren min/max aus dem Katalog"
+    severity: critical
+    message_de: "Numerischer Wert verletzt die im Katalog definierten Grenzen."

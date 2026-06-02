@@ -1,0 +1,28 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+env/
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Secrets
+.env
+*.key
+
+# Generierte Outputs (Audit-Logs/Reports werden zur Laufzeit erzeugt)
+output/reports/*
+output/audit_logs/*
+!output/reports/.gitkeep
+!output/audit_logs/.gitkeep
+
+# OS / IDE
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+
+# Grosse Quell-PDFs (optional aus Repo halten; per DVC/Link referenzieren)
+# data/source_docs/*.pdf

@@ -1,0 +1,113 @@
+# ===========================================================================
+# ESRS S1 (Eigene Belegschaft) - Datenpunktkatalog
+# ---------------------------------------------------------------------------
+# Quelle: Amended ESRS Exposure Draft, Juli 2025 (EFRAG), DR S1-1 bis S1-17
+# ===========================================================================
+
+metadata:
+  standard: "ESRS S1"
+  title: "Own Workforce / Eigene Belegschaft"
+  source: "Amended ESRS Exposure Draft (July 2025), EFRAG"
+  catalog_version: "0.1.0"
+
+datapoints:
+
+  - id: S1-DP-001
+    dr: S1-6
+    name: "Total employees (FTE)"
+    name_de: "Gesamtbelegschaft (FTE)"
+    category: workforce_size
+    datatype: numeric
+    unit: FTE
+    mandatory: true
+    value_path: company.employees_fte
+
+  - id: S1-DP-002
+    dr: S1-16
+    name: "Gender pay gap"
+    name_de: "Gender Pay Gap"
+    category: equal_treatment
+    datatype: percentage
+    unit: "%"
+    mandatory: true
+    value_path: social_own_workforce.gender_pay_gap_percent
+
+  - id: S1-DP-003
+    dr: S1-14
+    name: "Work-related injury rate per 1000 FTE"
+    name_de: "Verletzungsrate je 1.000 Mitarbeiter"
+    category: health_safety
+    datatype: numeric
+    unit: Faelle/1000 FTE
+    mandatory: true
+    value_path: social_own_workforce.injury_rate_per_1000_fte
+
+  - id: S1-DP-004
+    dr: S1-13
+    name: "Average training hours per FTE"
+    name_de: "Durchschnittliche Schulungsstunden je Mitarbeiter"
+    category: training
+    datatype: numeric
+    unit: h/FTE
+    mandatory: true
+    value_path: social_own_workforce.training_hours_per_fte
+
+  - id: S1-DP-005
+    dr: S1-6
+    name: "Employee turnover rate"
+    name_de: "Mitarbeiterfluktuation"
+    category: workforce_stability
+    datatype: percentage
+    unit: "%"
+    mandatory: false
+    value_path: social_own_workforce.turnover_rate_percent
+
+  - id: S1-DP-006
+    dr: S1-9
+    name: "Female leadership share"
+    name_de: "Frauenanteil in Fuehrungspositionen"
+    category: equal_treatment
+    datatype: percentage
+    unit: "%"
+    mandatory: true
+    value_path: social_own_workforce.female_leadership_percent
+
+  - id: S1-DP-007
+    dr: S1-8
+    name: "Collective bargaining coverage"
+    name_de: "Tarifbindungsquote"
+    category: working_conditions
+    datatype: percentage
+    unit: "%"
+    mandatory: true
+    value_path: social_own_workforce.collective_bargaining_coverage_percent
+
+  - id: S1-DP-008
+    dr: S1-10
+    name: "Employees below living wage"
+    name_de: "Mitarbeiter unterhalb existenzsicherndem Lohn"
+    category: working_conditions
+    datatype: percentage
+    unit: "%"
+    mandatory: true
+    value_path: social_own_workforce.employees_below_living_wage_percent
+
+  - id: S1-DP-009
+    dr: S1-12
+    name: "Disability inclusion rate"
+    name_de: "Beschaeftigungsquote Schwerbehinderte"
+    category: equal_treatment
+    datatype: percentage
+    unit: "%"
+    mandatory: false
+    value_path: social_own_workforce.disability_inclusion_percent
+
+  - id: S1-DP-010
+    dr: S1-7
+    name: "Employee engagement score"
+    name_de: "Mitarbeiterzufriedenheitsindex"
+    category: working_conditions
+    datatype: numeric
+    unit: Punkte (0-100)
+    mandatory: false
+    value_path: social_own_workforce.employee_engagement_score

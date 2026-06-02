@@ -1,0 +1,103 @@
+# ===========================================================================
+# ESRS G1 (Unternehmenspolitik / Governance) - Datenpunktkatalog
+# ---------------------------------------------------------------------------
+# Quelle: Amended ESRS Exposure Draft, Juli 2025 (EFRAG), DR G1-1 bis G1-5
+# ===========================================================================
+
+metadata:
+  standard: "ESRS G1"
+  title: "Business Conduct / Unternehmenspolitik"
+  source: "Amended ESRS Exposure Draft (July 2025), EFRAG"
+  catalog_version: "0.1.0"
+
+datapoints:
+
+  - id: G1-DP-001
+    dr: G1-4
+    name: "Compliance violations"
+    name_de: "Compliance-Verstossse"
+    category: business_conduct
+    datatype: integer
+    unit: Anzahl
+    mandatory: true
+    value_path: governance.compliance_violations_count
+
+  - id: G1-DP-002
+    dr: G1-3
+    name: "Anti-corruption training coverage"
+    name_de: "Antikorruptionstraining-Abdeckung"
+    category: anti_corruption
+    datatype: percentage
+    unit: "%"
+    mandatory: true
+    value_path: governance.anti_corruption_training_percent
+
+  - id: G1-DP-003
+    dr: G1-2
+    name: "Whistleblowing cases reported"
+    name_de: "Hinweisgeberfaelle gemeldet"
+    category: business_conduct
+    datatype: integer
+    unit: Anzahl
+    mandatory: true
+    value_path: governance.whistleblowing_cases_count
+
+  - id: G1-DP-004
+    dr: G1-2
+    name: "Whistleblowing cases substantiated"
+    name_de: "Bestaettigte Hinweisgeberfaelle"
+    category: business_conduct
+    datatype: integer
+    unit: Anzahl
+    mandatory: true
+    value_path: governance.whistleblowing_cases_substantiated_count
+
+  - id: G1-DP-005
+    dr: G1-1
+    name: "Board independence rate"
+    name_de: "Unabhaengigkeit des Aufsichtsrats"
+    category: governance_structure
+    datatype: percentage
+    unit: "%"
+    mandatory: true
+    value_path: governance.board_independence_percent
+
+  - id: G1-DP-006
+    dr: G1-1
+    name: "Women on board"
+    name_de: "Frauenanteil im Aufsichtsrat"
+    category: governance_structure
+    datatype: percentage
+    unit: "%"
+    mandatory: true
+    value_path: governance.women_on_board_percent
+
+  - id: G1-DP-007
+    dr: G1-4
+    name: "Total fines and penalties"
+    name_de: "Bussgelder und Strafen gesamt"
+    category: business_conduct
+    datatype: numeric
+    unit: Mio. EUR
+    mandatory: true
+    value_path: governance.fines_total_mio_eur
+
+  - id: G1-DP-008
+    dr: G1-5
+    name: "Tax transparency report published"
+    name_de: "Steuertransparenzbericht veroeffentlicht"
+    category: tax
+    datatype: narrative
+    unit: bool
+    mandatory: true
+    value_path: governance.tax_transparency_published
+
+  - id: G1-DP-009
+    dr: G1-5
+    name: "Lobbying expenses"
+    name_de: "Lobbyingausgaben"
+    category: political_engagement
+    datatype: numeric
+    unit: Mio. EUR
+    mandatory: false
+    value_path: governance.lobbying_expenses_mio_eur

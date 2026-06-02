@@ -1,0 +1,25 @@
+# Core
+pyyaml>=6.0
+python-dotenv>=1.0
+pandas>=2.0
+jsonschema>=4.20
+
+# LLM (Claude) - optional zur Laufzeit, nur fuer den claude-Backend benoetigt
+anthropic>=0.40
+
+# Machine Learning + Explainability (H2d)
+scikit-learn>=1.4
+shap>=0.45
+numpy>=1.26
+
+# Reporting / Export
+markdown>=3.6
+reportlab>=4.0
+
+# UI
+streamlit>=1.36
+plotly>=5.0
+
+# Tests
+pytest>=8.0
+pytest-cov>=5.0

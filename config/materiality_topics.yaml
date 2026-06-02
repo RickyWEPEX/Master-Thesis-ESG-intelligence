@@ -1,0 +1,444 @@
+# ===========================================================================
+# Doppelte Wesentlichkeitsanalyse (Double Materiality) - Themenkonfiguration
+# ---------------------------------------------------------------------------
+# Gemaess ESRS 1 (Kapitel 3) und IRO-1. Erfasst beide Dimensionen:
+#   - impact (Inside-Out):    Auswirkung des Unternehmens auf Umwelt/Gesellschaft
+#   - financial (Outside-In): finanzielle Auswirkung des Themas auf das Unternehmen
+#
+# Ein Thema ist WESENTLICH, wenn mindestens eine Dimension den Schwellenwert
+# erreicht (ESRS 1, 3.4). Konfigurierbar ohne Code-Aenderung (NFA-3.2 / H3a).
+#
+# Auto-Bewertung (FA-3.2): Liegen keine manuellen Scores im Input vor
+# (company_data.materiality), werden Impact-/Financial-Scores heuristisch aus
+# vorhandenen KPIs abgeleitet. Signal-Regeln je Thema unten.
+#
+# Score-Skala: 1 (unwesentlich) .. 5 (sehr wesentlich). Schwelle: >= 3.0
+# ===========================================================================
+
+metadata:
+  framework: "ESRS 1 - Double Materiality Assessment (IRO-1)"
+  scale: "1 (gering) bis 5 (sehr hoch)"
+  materiality_threshold: 3.0
+  sector_default: "Financial Services"
+  note: >
+    Sektorspezifische Default-Relevanz fuer Finanzdienstleister. Bei vorhandenen
+    KPI-Daten werden die heuristischen Signale ausgewertet; sonst gilt der
+    sector_default_score als Ausgangspunkt.
+
+topics:
+
+  - id: E1
+    name_de: "Klimawandel"
+    standard: "ESRS E1"
+    sector_default_impact: 4.0
+    sector_default_financial: 4.0
+    # Impact-Sub-Kriterien gemaess IG 1 / ESRS 1 AR 20 (Scale, Scope, Irremediabilitaet, Likelihood)
+    impact_criteria:
+      type: potential          # finanzierte Emissionen (Scope 3 Kat. 15) sind noch nicht eingetreten
+      scale: 5                 # Klimawandel ist existenzielle Bedrohung (katastrophale Auswirkung)
+      scope: 5                 # global, betrifft gesamte Menschheit und alle Oekosysteme
+      irremediability: 5       # CO2 verbleibt Jahrhunderte in der Atmosphaere, irreversibel
+      likelihood: 5            # Klimawandel ist bereits im Gange, Eintritt sicher
+    # Impact-Signale: hohe Emissionen = hohe Auswirkung auf das Klima
+    impact_signals:
+      - path: emissions.total_ghg_market_tco2e
+        threshold: 50000      # > Schwelle => +Score
+        weight: 2.0
+      - path: emissions.scope_3_categories.cat_15_investments
+        threshold: 50000      # finanzierte Emissionen
+        weight: 2.0
+    # Financial-Signale: physisches/transitorisches Risiko = finanzielle Wesentlichkeit
+    financial_signals:
+      - path: financial_effects.assets_at_physical_risk_percent
+        threshold: 5
+        weight: 2.0
+      - path: financial_effects.transition_risk_exposure_mio_eur
+        threshold: 50
+        weight: 2.0
+    # Sub-Topics gemaess IG 1 Appendix A (zweite Bewertungsebene fuer wesentliche Standards)
+    sub_topics:
+      - id: E1-mitigation
+        name_de: "Klimaschutz / Minderung"
+        appendix_a_ref: "Climate change mitigation"
+        esrs_drs: "E1-1, E1-3, E1-5, E1-6, E1-9, E1-10, E1-11"
+        impact_criteria:
+          type: potential
+          scale: 5      # finanzierte Emissionen: globaler Klimaschaden
+          scope: 5      # betrifft gesamte Menschheit
+          irremediability: 5
+          likelihood: 5
+        financial_signals:
+          - path: financial_effects.transition_risk_exposure_mio_eur
+            threshold: 50
+            weight: 1.5
+          - path: emissions.total_ghg_market_tco2e
+            threshold: 50000
+            weight: 1.5
+        sector_default_financial: 4.5
+      - id: E1-adaptation
+        name_de: "Klimaanpassung"
+        appendix_a_ref: "Climate change adaptation"
+        esrs_drs: "E1-2, E1-SBM-3"
+        impact_criteria:
+          type: potential
+          scale: 4      # physische Schaeden durch Extremwetter an Sicherheiten
+          scope: 3      # regional (Kreditportfolio)
+          irremediability: 4
+          likelihood: 4 # Klimawandel schreitet voran
+        financial_signals:
+          - path: financial_effects.assets_at_physical_risk_percent
+            threshold: 5
+            weight: 2.0
+        sector_default_financial: 3.5
+      - id: E1-energy
+        name_de: "Energie"
+        appendix_a_ref: "Energy"
+        esrs_drs: "E1-4"
+        impact_criteria:
+          type: actual
+          scale: 2      # Eigenverbrauch einer Bank: gering
+          scope: 2
+          irremediability: 1
+        financial_signals:
+          - path: energy.renewable_share_percent
+            threshold: 0
+            weight: 0   # Signal vorhanden, aber positiv (kein Risikosignal)
+        sector_default_financial: 2.5
+
+  - id: E2
+    name_de: "Umweltverschmutzung"
+    standard: "ESRS E2"
+    sector_default_impact: 1.5
+    sector_default_financial: 1.5
+    impact_criteria:
+      type: potential          # Buerostandort; industrielle Verschmutzung nicht relevant
+      scale: 2                 # geringe Schwere (kein Produktionsbetrieb)
+      scope: 1                 # sehr lokale Auswirkung (Buerogebaeude)
+      irremediability: 3       # Schadstoffemissionen haben gewisse Persistenz
+      likelihood: 2            # sehr geringe Eintrittswahrscheinlichkeit fuer Finanzinstitut
+    # Direkte Schadstoffemissionen und finanziertes Verschmutzungsrisiko
+    impact_signals:
+      - path: pollution.hazardous_waste_tonnes
+        threshold: 0.5
+        weight: 1.0
+      - path: pollution.air_emissions_nox_kg
+        threshold: 100
+        weight: 0.5
+      - path: pollution.pollution_incidents_count
+        threshold: 1
+        weight: 2.0
+    financial_signals:
+      - path: pollution.financed_pollution_exposure_percent
+        threshold: 5.0
+        weight: 1.5
+    sub_topics:
+      - id: E2-air
+        name_de: "Luftverschmutzung"
+        appendix_a_ref: "Pollution of air"
+        status: pending
+      - id: E2-water
+        name_de: "Wasserverschmutzung"
+        appendix_a_ref: "Pollution of water"
+        status: pending
+      - id: E2-soil
+        name_de: "Bodenverschmutzung"
+        appendix_a_ref: "Pollution of soil"
+        status: pending
+      - id: E2-substances
+        name_de: "Besorgniserregende Stoffe"
+        appendix_a_ref: "Substances of concern"
+        status: pending
+
+  - id: E3
+    name_de: "Wasser- und Meeresressourcen"
+    standard: "ESRS E3"
+    sector_default_impact: 1.5
+    sector_default_financial: 1.5
+    impact_criteria:
+      type: potential
+      scale: 1                 # Wasserverbrauch eines Buerogebaeudes ist vernachlaessigbar
+      scope: 1                 # lokaler Wasserbezug, kein industrieller Verbrauch
+      irremediability: 1       # Wasser erneuert sich im Kreislauf
+      likelihood: 2            # keine wasserintensiven Eigenoperationen
+    # Wasserverbrauch und -stress sowie finanziertes Wasserrisiko
+    impact_signals:
+      - path: water.total_consumption_m3
+        threshold: 3000
+        weight: 0.5
+      - path: water.water_stress_area_withdrawal_percent
+        threshold: 5.0
+        weight: 1.5
+    financial_signals:
+      - path: water.financed_water_intensive_exposure_percent
+        threshold: 5.0
+        weight: 1.5
+    sub_topics:
+      - id: E3-water-use
+        name_de: "Wassernutzung"
+        appendix_a_ref: "Water use"
+        status: pending
+      - id: E3-marine
+        name_de: "Meeresressourcen"
+        appendix_a_ref: "Marine resources"
+        status: pending
+
+  - id: E4
+    name_de: "Biodiversitaet und Oekosysteme"
+    standard: "ESRS E4"
+    sector_default_impact: 2.0
+    sector_default_financial: 2.0
+    impact_criteria:
+      type: potential          # indirekt ueber Agrar-/Immobilienfinanzierungen
+      scale: 3                 # moderate Schwere (regionales Kreditportfolio)
+      scope: 2                 # regionale Reichweite (Deutschland / DACH)
+      irremediability: 4       # Artenverlust und Oekosystemschaeden schwer reversibel
+      likelihood: 2            # geringe Wahrscheinlichkeit fuer kleines Regionalinstitut
+    # Flaechenversiegelung, Schutzgebietsnaehe, finanziertes Biodiversitaetsrisiko
+    impact_signals:
+      - path: biodiversity.sealed_surface_m2
+        threshold: 1500
+        weight: 0.5
+      - path: biodiversity.biodiversity_net_impact_score
+        threshold: 0.1
+        weight: 1.0
+    financial_signals:
+      - path: biodiversity.financed_sensitive_area_exposure_percent
+        threshold: 2.0
+        weight: 1.0
+      - path: financial_effects.transition_risk_exposure_mio_eur
+        threshold: 100
+        weight: 0.5
+    sub_topics:
+      - id: E4-drivers
+        name_de: "Direkte Einflussfaktoren auf Biodiversitaet"
+        appendix_a_ref: "Direct impact drivers of biodiversity loss"
+        status: pending
+      - id: E4-state
+        name_de: "Zustand der Biodiversitaet"
+        appendix_a_ref: "Biodiversity and ecosystem state"
+        status: pending
+      - id: E4-services
+        name_de: "Oekosystemleistungen"
+        appendix_a_ref: "Ecosystem services"
+        status: pending
+
+  - id: E5
+    name_de: "Ressourcennutzung und Kreislaufwirtschaft"
+    standard: "ESRS E5"
+    sector_default_impact: 1.5
+    sector_default_financial: 1.5
+    impact_criteria:
+      type: potential
+      scale: 1                 # Banken verbrauchen kaum Rohmaterialien (kein produzierendes Gewerbe)
+      scope: 1                 # sehr lokale Ressourcennutzung (Burobedarf, IT)
+      irremediability: 3       # Ressourcenverknappung graduell, teilweise reversibel
+      likelihood: 2            # geringe Wahrscheinlichkeit signifikanter Ressourcenauswirkung
+    # Abfallmenge, Recyclingluecke, finanziertes ressourcenintensives Portfolio
+    impact_signals:
+      - path: resources.total_waste_tonnes
+        threshold: 10.0
+        weight: 0.5
+      - path: resources.recycling_rate_percent
+        threshold: 0
+        weight: 0
+      - path: resources.paper_consumption_kg_per_fte
+        threshold: 20
+        weight: 0.5
+    financial_signals:
+      - path: resources.financed_resource_intensive_exposure_percent
+        threshold: 8.0
+        weight: 1.5
+
+  - id: S1
+    name_de: "Eigene Belegschaft"
+    standard: "ESRS S1"
+    sector_default_impact: 3.5
+    sector_default_financial: 3.0
+    impact_criteria:
+      type: actual             # direkte Auswirkung auf eigene Mitarbeiter (450 FTE)
+      scale: 3                 # moderate Schwere (Arbeitsbedingungen, Lohngleichheit)
+      scope: 4                 # betrifft alle Mitarbeiter (volle Abdeckung)
+      irremediability: 2       # Arbeitsplatzbedingungen sind durch Massnahmen verbesserbar
+      # Kein Likelihood-Feld bei actual impacts (IG 1 para 44a)
+    # Groesse der Belegschaft, Lohnluecke, Verletzungsrate, Fluktuation
+    impact_signals:
+      - path: company.employees_fte
+        threshold: 250
+        weight: 1.0
+      - path: social_own_workforce.gender_pay_gap_percent
+        threshold: 5.0
+        weight: 1.0
+      - path: social_own_workforce.injury_rate_per_1000_fte
+        threshold: 3.0
+        weight: 1.0
+    financial_signals:
+      - path: social_own_workforce.turnover_rate_percent
+        threshold: 10.0
+        weight: 1.0
+      - path: social_own_workforce.employee_engagement_score
+        threshold: 0
+        weight: 0
+    sub_topics:
+      - id: S1-conditions
+        name_de: "Arbeitsbedingungen"
+        appendix_a_ref: "Working conditions (secure employment, working time, wages, social dialogue)"
+        status: pending
+      - id: S1-equal
+        name_de: "Gleichbehandlung und Chancengleichheit"
+        appendix_a_ref: "Equal treatment and opportunities (gender equality, diversity, disability)"
+        status: pending
+      - id: S1-rights
+        name_de: "Weitere Arbeitnehmerrechte"
+        appendix_a_ref: "Other work-related rights (child labour, forced labour, privacy)"
+        status: pending
+
+  - id: S2
+    name_de: "Arbeitskraefte in der Wertschoepfungskette"
+    standard: "ESRS S2"
+    sector_default_impact: 2.5
+    sector_default_financial: 2.0
+    impact_criteria:
+      type: potential          # indirekt ueber Lieferanten und finanzierte Unternehmen
+      scale: 3                 # Arbeitnehmerrechte koennen erheblich verletzt werden
+      scope: 3                 # regionale Lieferkette (148 Lieferanten)
+      irremediability: 3       # Arbeitsrechtsverletzungen teilweise remediierbar
+      likelihood: 3            # moderat (8,5% Hochrisikolieferanten)
+    # Anteil Hochrisikolieferanten und finanziertes Lieferkettenrisiko
+    impact_signals:
+      - path: social_value_chain.high_risk_suppliers_percent
+        threshold: 5.0
+        weight: 1.5
+      - path: social_value_chain.human_rights_violations_in_chain_count
+        threshold: 1
+        weight: 2.0
+    financial_signals:
+      - path: social_value_chain.financed_supply_chain_risk_exposure_percent
+        threshold: 10.0
+        weight: 1.5
+    sub_topics:
+      - id: S2-conditions
+        name_de: "Arbeitsbedingungen in der Lieferkette"
+        appendix_a_ref: "Working conditions"
+        status: pending
+      - id: S2-equal
+        name_de: "Gleichbehandlung in der Lieferkette"
+        appendix_a_ref: "Equal treatment and opportunities"
+        status: pending
+
+  - id: S3
+    name_de: "Betroffene Gemeinschaften"
+    standard: "ESRS S3"
+    sector_default_impact: 2.0
+    sector_default_financial: 2.0
+    impact_criteria:
+      type: potential
+      scale: 1                 # Regionalbank hat minimalen Community-Fussabdruck
+      scope: 2                 # lokale Gemeinden im Geschaeftsgebiet
+      irremediability: 2       # Gemeinschaftsauswirkungen meist reversibel
+      likelihood: 2            # geringe Wahrscheinlichkeit negativer Gemeinschaftsauswirkungen
+    # Community-Beschwerden und Investitionsvolumen als Proxy
+    impact_signals:
+      - path: communities.complaints_received_count
+        threshold: 5
+        weight: 1.5
+      - path: communities.community_investment_mio_eur
+        threshold: 0.5
+        weight: 0.5
+    financial_signals:
+      - path: communities.social_finance_volume_mio_eur
+        threshold: 10.0
+        weight: 0.5
+
+  - id: S4
+    name_de: "Verbraucher und Endnutzer"
+    standard: "ESRS S4"
+    sector_default_impact: 3.0
+    sector_default_financial: 3.0
+    impact_criteria:
+      type: actual             # direkte Kundenbeziehung (Einlagen, Kredite, Beratung)
+      scale: 3                 # finanzieller Schaden durch Falschberatung kann erheblich sein
+      scope: 4                 # betrifft breite Kundenbasis (Privat- und Firmenkunden)
+      irremediability: 2       # Finanzieller Schaden oft durch Entschaedigung behebbar
+      # Kein Likelihood-Feld bei actual impacts (IG 1 para 44a)
+    # Kundenbeschwerden, Datenpannen, Falschverkauf (fuer Finanzinstitute besonders relevant)
+    impact_signals:
+      - path: consumers.customer_complaints_per_1000
+        threshold: 3.0
+        weight: 1.0
+      - path: consumers.data_breaches_count
+        threshold: 1
+        weight: 2.0
+      - path: consumers.product_mis_selling_cases_count
+        threshold: 1
+        weight: 1.5
+    financial_signals:
+      - path: consumers.vulnerable_customer_share_percent
+        threshold: 10.0
+        weight: 1.0
+      - path: consumers.customer_satisfaction_score
+        threshold: 0
+        weight: 0
+    sub_topics:
+      - id: S4-info
+        name_de: "Informationsbezogene Auswirkungen"
+        appendix_a_ref: "Information-related impacts for consumers (privacy, advertising)"
+        status: pending
+      - id: S4-safety
+        name_de: "Persoenliche Sicherheit der Verbraucher"
+        appendix_a_ref: "Personal safety and security of consumers"
+        status: pending
+      - id: S4-inclusion
+        name_de: "Soziale Inklusion"
+        appendix_a_ref: "Social inclusion (access to products, responsible marketing)"
+        status: pending
+
+  - id: G1
+    name_de: "Unternehmenspolitik / Governance"
+    standard: "ESRS G1"
+    sector_default_impact: 3.5
+    sector_default_financial: 3.5
+    impact_criteria:
+      type: actual             # Governance ist unmittelbar vorhanden oder nicht
+      scale: 4                 # Governance-Versagen kann systemische Schaden ausloesen
+      scope: 4                 # betrifft alle Stakeholder (Kunden, Mitarbeiter, Markt)
+      irremediability: 3       # Governance verbesserbar, aber Reputationsschaden persistent
+      # Kein Likelihood-Feld bei actual impacts (IG 1 para 44a)
+    # Fuer Finanzinstitute regelmaessig wesentlich (BaFin, MaRisk, Geschaeftsethik)
+    impact_signals:
+      - path: governance.compliance_violations_count
+        threshold: 1
+        weight: 2.0
+      - path: governance.whistleblowing_cases_substantiated_count
+        threshold: 1
+        weight: 2.0
+    financial_signals:
+      - path: governance.fines_total_mio_eur
+        threshold: 0.1
+        weight: 2.0
+      - path: governance.anti_corruption_training_percent
+        threshold: 0
+        weight: 0
+      - path: governance.board_independence_percent
+        threshold: 0
+        weight: 0
+    sub_topics:
+      - id: G1-culture
+        name_de: "Unternehmenskultur und Geschaeftsethik"
+        appendix_a_ref: "Corporate culture and business conduct"
+        status: pending
+      - id: G1-corruption
+        name_de: "Korruptionspraevention und -aufdeckung"
+        appendix_a_ref: "Prevention and detection of corruption and bribery"
+        status: pending
+      - id: G1-lobbying
+        name_de: "Politisches Engagement und Lobbying"
+        appendix_a_ref: "Political engagement and lobbying activities"
+        status: pending
+      - id: G1-suppliers
+        name_de: "Lieferantenbeziehungen"
+        appendix_a_ref: "Management of relationships with suppliers"
+        status: pending
+      - id: G1-tax
+        name_de: "Steuertransparenz"
+        appendix_a_ref: "Tax"
+        status: pending

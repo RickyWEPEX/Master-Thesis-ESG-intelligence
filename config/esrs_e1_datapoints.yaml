@@ -1,0 +1,534 @@
+# ===========================================================================
+# ESRS E1 (Klimawandel) - Datenpunktkatalog
+# ---------------------------------------------------------------------------
+# Quelle: Amended ESRS Exposure Draft, Juli 2025 (EFRAG), DR E1-1 bis E1-11
+# Zweck:  Konfigurierbarer Katalog. Neue/geaenderte Datenpunkte sind ohne
+#         Code-Aenderung integrierbar (NFA-3.2 / Hypothese H3a, H3c).
+#
+# Feldsemantik je Datenpunkt:
+#   id          eindeutige Datenpunkt-ID
+#   dr          zugehoeriges Disclosure Requirement (E1-1 .. E1-11)
+#   name / name_de  Bezeichnung (EFRAG-Taxonomie, NFA-5.1)
+#   category    Gruppierung (emissions | energy | targets | intensity |
+#               removals | carbon_pricing | financial_effects | narrative)
+#   datatype    numeric | integer | percentage | year | narrative
+#   unit        Messeinheit (tCO2e, MWh, %, EUR, ...)
+#   mandatory   true = Pflichtangabe (Vollstaendigkeitspruefung FA-3.1)
+#   value_path  Pfad in den Unternehmensdaten (Punktnotation)
+#   validation  optionale Wertgrenzen (siehe auch validation_rules.yaml)
+# ===========================================================================
+
+metadata:
+  standard: "ESRS E1"
+  title: "Climate Change / Klimawandel"
+  source: "Amended ESRS Exposure Draft (July 2025), EFRAG"
+  catalog_version: "0.1.0"
+  note: >
+    Repraesentativer, erweiterbarer Auszug der E1-Datenpunkte. Die DR-Nummerierung
+    folgt dem Amended ED (Juli 2025). Vollausbau auf den vollstaendigen Katalog
+    erfolgt durch Ergaenzung weiterer Eintraege - ohne Code-Aenderung.
+
+categories:
+  emissions: "THG-Emissionen (Scope 1/2/3)"
+  energy: "Energieverbrauch und -mix"
+  targets: "Emissionsreduktionsziele / Transitionsplan"
+  intensity: "Intensitaetskennzahlen"
+  removals: "THG-Entnahmen und Carbon Credits"
+  carbon_pricing: "Internes Carbon Pricing"
+  financial_effects: "Antizipierte finanzielle Effekte"
+  narrative: "Narrative Offenlegungen"
+
+datapoints:
+
+  # --- DR E1-6: Brutto-THG-Emissionen ------------------------------------
+  - id: E1-DP-001
+    dr: E1-6
+    name: "Gross Scope 1 GHG emissions"
+    name_de: "Brutto Scope-1-THG-Emissionen"
+    category: emissions
+    datatype: numeric
+    unit: tCO2e
+    mandatory: true
+    value_path: emissions.scope_1_tco2e
+    validation: {min: 0}
+
+  - id: E1-DP-002
+    dr: E1-6
+    name: "Percentage of Scope 1 emissions from regulated ETS"
+    name_de: "Anteil Scope-1-Emissionen aus regulierten Emissionshandelssystemen"
+    category: emissions
+    datatype: percentage
+    unit: "%"
+    mandatory: false
+    value_path: emissions.scope_1_ets_percent
+    validation: {min: 0, max: 100}
+
+  - id: E1-DP-003
+    dr: E1-6
+    name: "Gross Scope 2 GHG emissions (location-based)"
+    name_de: "Brutto Scope-2-THG-Emissionen (standortbasiert)"
+    category: emissions
+    datatype: numeric
+    unit: tCO2e
+    mandatory: true
+    value_path: emissions.scope_2_location_tco2e
+    validation: {min: 0}
+
+  - id: E1-DP-004
+    dr: E1-6
+    name: "Gross Scope 2 GHG emissions (market-based)"
+    name_de: "Brutto Scope-2-THG-Emissionen (marktbasiert)"
+    category: emissions
+    datatype: numeric
+    unit: tCO2e
+    mandatory: true
+    value_path: emissions.scope_2_market_tco2e
+    validation: {min: 0}
+
+  - id: E1-DP-005
+    dr: E1-6
+    name: "Gross Scope 3 GHG emissions (total)"
+    name_de: "Brutto Scope-3-THG-Emissionen (gesamt)"
+    category: emissions
+    datatype: numeric
+    unit: tCO2e
+    mandatory: true
+    value_path: emissions.scope_3_total_tco2e
+    validation: {min: 0}
+
+  - id: E1-DP-006
+    dr: E1-6
+    name: "Total GHG emissions (location-based)"
+    name_de: "Gesamte THG-Emissionen (standortbasiert)"
+    category: emissions
+    datatype: numeric
+    unit: tCO2e
+    mandatory: true
+    value_path: emissions.total_ghg_location_tco2e
+    validation: {min: 0}
+
+  - id: E1-DP-007
+    dr: E1-6
+    name: "Total GHG emissions (market-based)"
+    name_de: "Gesamte THG-Emissionen (marktbasiert)"
+    category: emissions
+    datatype: numeric
+    unit: tCO2e
+    mandatory: true
+    value_path: emissions.total_ghg_market_tco2e
+    validation: {min: 0}
+
+  - id: E1-DP-008
+    dr: E1-6
+    name: "Biogenic CO2 emissions (reported separately)"
+    name_de: "Biogene CO2-Emissionen (separat ausgewiesen)"
+    category: emissions
+    datatype: numeric
+    unit: tCO2e
+    mandatory: false
+    value_path: emissions.biogenic_co2_tco2e
+    validation: {min: 0}
+
+  # Scope-3-Kategorien (GHG Protocol Corporate Value Chain) - Auswahl materieller Kategorien
+  - id: E1-DP-009
+    dr: E1-6
+    name: "Scope 3 Cat. 1 - Purchased goods and services"
+    name_de: "Scope 3 Kat. 1 - Eingekaufte Gueter und Dienstleistungen"
+    category: emissions
+    datatype: numeric
+    unit: tCO2e
+    mandatory: false
+    value_path: emissions.scope_3_categories.cat_1_purchased_goods
+    validation: {min: 0}
+
+  - id: E1-DP-010
+    dr: E1-6
+    name: "Scope 3 Cat. 6 - Business travel"
+    name_de: "Scope 3 Kat. 6 - Geschaeftsreisen"
+    category: emissions
+    datatype: numeric
+    unit: tCO2e
+    mandatory: false
+    value_path: emissions.scope_3_categories.cat_6_business_travel
+    validation: {min: 0}
+
+  - id: E1-DP-011
+    dr: E1-6
+    name: "Scope 3 Cat. 7 - Employee commuting"
+    name_de: "Scope 3 Kat. 7 - Pendelverkehr der Mitarbeitenden"
+    category: emissions
+    datatype: numeric
+    unit: tCO2e
+    mandatory: false
+    value_path: emissions.scope_3_categories.cat_7_employee_commuting
+    validation: {min: 0}
+
+  - id: E1-DP-012
+    dr: E1-6
+    name: "Scope 3 Cat. 15 - Investments (financed emissions)"
+    name_de: "Scope 3 Kat. 15 - Investitionen (finanzierte Emissionen)"
+    category: emissions
+    datatype: numeric
+    unit: tCO2e
+    mandatory: true   # fuer Finanzinstitute regelmaessig wesentlich
+    value_path: emissions.scope_3_categories.cat_15_investments
+    validation: {min: 0}
+
+  # --- DR E1-4: Energieverbrauch und -mix --------------------------------
+  - id: E1-DP-013
+    dr: E1-4
+    name: "Total energy consumption"
+    name_de: "Gesamtenergieverbrauch"
+    category: energy
+    datatype: numeric
+    unit: MWh
+    mandatory: true
+    value_path: energy.total_consumption_mwh
+    validation: {min: 0}
+
+  - id: E1-DP-014
+    dr: E1-4
+    name: "Energy consumption from fossil sources"
+    name_de: "Energieverbrauch aus fossilen Quellen"
+    category: energy
+    datatype: numeric
+    unit: MWh
+    mandatory: true
+    value_path: energy.fossil_mwh
+    validation: {min: 0}
+
+  - id: E1-DP-015
+    dr: E1-4
+    name: "Energy consumption from nuclear sources"
+    name_de: "Energieverbrauch aus nuklearen Quellen"
+    category: energy
+    datatype: numeric
+    unit: MWh
+    mandatory: true
+    value_path: energy.nuclear_mwh
+    validation: {min: 0}
+
+  - id: E1-DP-016
+    dr: E1-4
+    name: "Energy consumption from renewable sources"
+    name_de: "Energieverbrauch aus erneuerbaren Quellen"
+    category: energy
+    datatype: numeric
+    unit: MWh
+    mandatory: true
+    value_path: energy.renewable_mwh
+    validation: {min: 0}
+
+  - id: E1-DP-017
+    dr: E1-4
+    name: "Share of renewable energy"
+    name_de: "Anteil erneuerbarer Energie"
+    category: energy
+    datatype: percentage
+    unit: "%"
+    mandatory: true
+    value_path: energy.renewable_share_percent
+    validation: {min: 0, max: 100}
+
+  - id: E1-DP-018
+    dr: E1-4
+    name: "Energy intensity (per net revenue)"
+    name_de: "Energieintensitaet (je Nettoumsatz)"
+    category: intensity
+    datatype: numeric
+    unit: "MWh/Mio EUR"
+    mandatory: false
+    value_path: energy.energy_intensity_mwh_per_mio_eur
+    validation: {min: 0}
+
+  # --- DR E1-5/E1-4: Ziele & Transitionsplan -----------------------------
+  - id: E1-DP-019
+    dr: E1-5
+    name: "GHG emission reduction target (base year)"
+    name_de: "THG-Reduktionsziel - Basisjahr"
+    category: targets
+    datatype: year
+    unit: "year"
+    mandatory: true
+    value_path: targets.base_year
+    validation: {min: 1990, max: 2050}
+
+  - id: E1-DP-020
+    dr: E1-5
+    name: "GHG emission reduction target (target year)"
+    name_de: "THG-Reduktionsziel - Zieljahr"
+    category: targets
+    datatype: year
+    unit: "year"
+    mandatory: true
+    value_path: targets.target_year
+    validation: {min: 2020, max: 2100}
+
+  - id: E1-DP-021
+    dr: E1-5
+    name: "GHG reduction target (gross, %)"
+    name_de: "THG-Reduktionsziel (Brutto, %)"
+    category: targets
+    datatype: percentage
+    unit: "%"
+    mandatory: true
+    value_path: targets.reduction_target_percent
+    validation: {min: 0, max: 100}
+
+  - id: E1-DP-022
+    dr: E1-1
+    name: "Net-zero target year"
+    name_de: "Zieljahr Netto-Null"
+    category: targets
+    datatype: year
+    unit: "year"
+    mandatory: false
+    value_path: targets.net_zero_year
+    validation: {min: 2030, max: 2100}
+
+  # --- DR E1-6: Intensitaetskennzahl -------------------------------------
+  - id: E1-DP-023
+    dr: E1-6
+    name: "GHG intensity per net revenue"
+    name_de: "THG-Intensitaet je Nettoumsatz"
+    category: intensity
+    datatype: numeric
+    unit: "tCO2e/Mio EUR"
+    mandatory: true
+    value_path: intensity.ghg_intensity_per_revenue
+    validation: {min: 0}
+
+  # --- DR E1-9: THG-Entnahmen & Carbon Credits ---------------------------
+  - id: E1-DP-024
+    dr: E1-9
+    name: "GHG removals (own operations and value chain)"
+    name_de: "THG-Entnahmen (eigene Betriebe und Wertschoepfungskette)"
+    category: removals
+    datatype: numeric
+    unit: tCO2e
+    mandatory: false
+    value_path: removals.ghg_removals_tco2e
+    validation: {min: 0}
+
+  - id: E1-DP-025
+    dr: E1-9
+    name: "Carbon credits purchased/cancelled"
+    name_de: "Erworbene/stornierte Carbon Credits"
+    category: removals
+    datatype: numeric
+    unit: tCO2e
+    mandatory: false
+    value_path: removals.carbon_credits_tco2e
+    validation: {min: 0}
+
+  # --- DR E1-10: Internes Carbon Pricing ---------------------------------
+  - id: E1-DP-026
+    dr: E1-10
+    name: "Internal carbon price applied"
+    name_de: "Angewandter interner CO2-Preis"
+    category: carbon_pricing
+    datatype: numeric
+    unit: "EUR/tCO2e"
+    mandatory: false
+    value_path: carbon_pricing.internal_carbon_price_eur_per_tco2e
+    validation: {min: 0}
+
+  # --- DR E1-11: Antizipierte finanzielle Effekte ------------------------
+  - id: E1-DP-027
+    dr: E1-11
+    name: "Assets at material physical risk (monetary)"
+    name_de: "Vermoegenswerte mit materiellem physischem Risiko (monetaer)"
+    category: financial_effects
+    datatype: numeric
+    unit: "Mio EUR"
+    mandatory: false
+    value_path: financial_effects.assets_at_physical_risk_mio_eur
+    validation: {min: 0}
+
+  - id: E1-DP-028
+    dr: E1-11
+    name: "Assets at material physical risk (%)"
+    name_de: "Anteil Vermoegenswerte mit materiellem physischem Risiko"
+    category: financial_effects
+    datatype: percentage
+    unit: "%"
+    mandatory: false
+    value_path: financial_effects.assets_at_physical_risk_percent
+    validation: {min: 0, max: 100}
+
+  # --- Narrative Offenlegungen (DR E1-1, E1-2, E1-3, SBM-3) ---------------
+  - id: E1-DP-029
+    dr: E1-1
+    name: "Transition plan for climate change mitigation"
+    name_de: "Transitionsplan zur Klimaschutzminderung"
+    category: narrative
+    datatype: narrative
+    unit: text
+    mandatory: true
+    value_path: narratives.transition_plan
+
+  - id: E1-DP-030
+    dr: E1-2
+    name: "Policies related to climate change mitigation and adaptation"
+    name_de: "Konzepte zu Klimaschutz und -anpassung"
+    category: narrative
+    datatype: narrative
+    unit: text
+    mandatory: true
+    value_path: narratives.climate_policies
+
+  - id: E1-DP-031
+    dr: E1-3
+    name: "Actions and resources for climate change policies"
+    name_de: "Massnahmen und Ressourcen zu Klimakonzepten"
+    category: narrative
+    datatype: narrative
+    unit: text
+    mandatory: true
+    value_path: narratives.climate_actions
+
+  - id: E1-DP-032
+    dr: E1-SBM-3
+    name: "Material physical climate risks"
+    name_de: "Materielle physische Klimarisiken"
+    category: narrative
+    datatype: narrative
+    unit: text
+    mandatory: true
+    value_path: narratives.physical_risks
+
+  - id: E1-DP-033
+    dr: E1-SBM-3
+    name: "Material transition climate risks"
+    name_de: "Materielle transitorische Klimarisiken"
+    category: narrative
+    datatype: narrative
+    unit: text
+    mandatory: true
+    value_path: narratives.transition_risks
+
+  - id: E1-DP-034
+    dr: E1-SBM-3
+    name: "Material climate-related opportunities"
+    name_de: "Materielle klimabezogene Chancen"
+    category: narrative
+    datatype: narrative
+    unit: text
+    mandatory: false
+    value_path: narratives.climate_opportunities
+
+  # ===========================================================================
+  # H3a-Demonstration: 10 zusaetzliche Datenpunkte via YAML (kein Code benoetigt)
+  # Quelle: Amended ESRS Exposure Drafts Juli 2025 + EBA Pillar 3 ESG
+  # Ergaenzt: Mai 2026 - Nachweis der YAML-Konfigurierbarkeit (NFA-3.2 / H3a)
+  # ===========================================================================
+
+  - id: E1-DP-035
+    dr: E1-6
+    name: "Scope 3 Cat. 3 - Fuel and energy related activities"
+    name_de: "Scope 3 Kat. 3 - Brennstoff- und energiebezogene Aktivitaeten"
+    category: emissions
+    datatype: numeric
+    unit: tCO2e
+    mandatory: false
+    value_path: emissions.scope_3_categories.cat_3_fuel_energy
+    validation: {min: 0}
+
+  - id: E1-DP-036
+    dr: E1-6
+    name: "Scope 3 Cat. 11 - Use of sold products"
+    name_de: "Scope 3 Kat. 11 - Nutzung verkaufter Produkte"
+    category: emissions
+    datatype: numeric
+    unit: tCO2e
+    mandatory: false
+    value_path: emissions.scope_3_categories.cat_11_sold_products
+    validation: {min: 0}
+
+  - id: E1-DP-037
+    dr: E1-6
+    name: "GHG intensity per full-time equivalent"
+    name_de: "THG-Intensitaet je Vollzeitaequivalent (FTE)"
+    category: intensity
+    datatype: numeric
+    unit: "tCO2e/FTE"
+    mandatory: false
+    value_path: intensity.ghg_intensity_per_fte
+    validation: {min: 0}
+
+  - id: E1-DP-038
+    dr: E1-11
+    name: "Green Asset Ratio (GAR) - EU Taxonomy aligned assets"
+    name_de: "Green Asset Ratio (GAR) - EU-Taxonomie-konforme Vermoegenswerte"
+    category: financial_effects
+    datatype: percentage
+    unit: "%"
+    mandatory: false
+    value_path: financial_effects.green_asset_ratio_percent
+    validation: {min: 0, max: 100}
+
+  - id: E1-DP-039
+    dr: E1-11
+    name: "Financed emissions per million EUR assets under management"
+    name_de: "Finanzierte Emissionen je Mio. EUR verwaltete Vermoegenswerte"
+    category: intensity
+    datatype: numeric
+    unit: "tCO2e/Mio EUR AuM"
+    mandatory: false
+    value_path: intensity.financed_emissions_per_mio_eur_aum
+    validation: {min: 0}
+
+  - id: E1-DP-040
+    dr: E1-4
+    name: "Energy produced from own renewable generation"
+    name_de: "Eigenerzeugung erneuerbarer Energie"
+    category: energy
+    datatype: numeric
+    unit: MWh
+    mandatory: false
+    value_path: energy.own_renewable_generation_mwh
+    validation: {min: 0}
+
+  - id: E1-DP-041
+    dr: E1-4
+    name: "Energy savings from efficiency measures (reporting year)"
+    name_de: "Energieeinsparungen durch Effizienzmasnahmen (Berichtsjahr)"
+    category: energy
+    datatype: numeric
+    unit: MWh
+    mandatory: false
+    value_path: energy.energy_savings_mwh
+    validation: {min: 0}
+
+  - id: E1-DP-042
+    dr: E1-5
+    name: "Scope 1+2 emissions reduction vs. base year (%)"
+    name_de: "Scope 1+2 Emissionsreduktion gg. Basisjahr (%)"
+    category: targets
+    datatype: percentage
+    unit: "%"
+    mandatory: false
+    value_path: targets.scope_1_2_reduction_vs_base_percent
+    validation: {min: -100, max: 100}
+
+  - id: E1-DP-043
+    dr: E1-11
+    name: "Climate-related financial risk exposure (transition risk, Mio EUR)"
+    name_de: "Klimabezogene finanzielle Risikoexposition Transitionsrisiken (Mio. EUR)"
+    category: financial_effects
+    datatype: numeric
+    unit: "Mio EUR"
+    mandatory: false
+    value_path: financial_effects.transition_risk_exposure_mio_eur
+    validation: {min: 0}
+
+  - id: E1-DP-044
+    dr: E1-11
+    name: "Green financing volume (loans, bonds, advisory)"
+    name_de: "Gruenfinanzierungsvolumen (Kredite, Anleihen, Beratung)"
+    category: financial_effects
+    datatype: numeric
+    unit: "Mio EUR"
+    mandatory: false
+    value_path: financial_effects.green_financing_volume_mio_eur
+    validation: {min: 0}

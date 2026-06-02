@@ -1,0 +1,274 @@
+{
+  "_meta": {
+    "sector": "Financial Services (Germany, Sparkassen/Genossenschaftsbanken, kleine bis mittlere Institute)",
+    "reference_year": 2024,
+    "source": "Synthetisiert aus EBA Pillar 3 ESG-Disclosures, BaFin Klimarisikoberichten, TCFD-Reports, EU-Bankenverband ESG-Daten vergleichbarer Institute",
+    "bilanzsumme_klasse": "1-25 Mrd. EUR (kleine bis mittlere Institute gemaess MaRisk-Novelle 9)",
+    "fte_reference": "100-1000 Mitarbeitende",
+    "note": "Benchmarks dienen der relativen Einordnung im Sektorkontext. Keine absoluten Grenzwerte."
+  },
+  "benchmarks": {
+
+    "_section_E1": "ESRS E1 Klimawandel",
+
+    "ghg_intensity_per_revenue_tco2e_mio_eur": {
+      "p10": 280, "p25": 550, "p50": 1100, "p75": 2200, "p90": 4500,
+      "unit": "tCO2e/Mio. EUR",
+      "label": "THG-Intensitaet je Nettoumsatz",
+      "ampel": {"gruen": 600, "gelb": 1500},
+      "interpretation_gruen": "Unterdurchschnittliche Emissionsintensitaet; gut positioniert fuer regulatorische Anforderungen.",
+      "interpretation_gelb": "Mittleres Niveau; Handlungsbedarf v.a. bei Portfolioausrichtung.",
+      "interpretation_rot": "Hohe Emissionsintensitaet; signifikanter Transformationsbedarf im Kredit- und Investitionsportfolio."
+    },
+    "scope_1_per_employee_tco2e": {
+      "p10": 0.5, "p25": 1.0, "p50": 2.5, "p75": 5.0, "p90": 9.0,
+      "unit": "tCO2e/FTE",
+      "label": "Scope-1-Emissionen je Vollzeitaequivalent",
+      "ampel": {"gruen": 1.5, "gelb": 4.0}
+    },
+    "scope_1_2_market_per_employee_tco2e": {
+      "p10": 1.5, "p25": 3.0, "p50": 6.0, "p75": 12.0, "p90": 20.0,
+      "unit": "tCO2e/FTE",
+      "label": "Scope 1+2 (marktbasiert) je Mitarbeitenden",
+      "ampel": {"gruen": 4.0, "gelb": 10.0}
+    },
+    "renewable_share_percent": {
+      "p10": 10, "p25": 25, "p50": 45, "p75": 70, "p90": 95,
+      "unit": "%",
+      "label": "Anteil erneuerbarer Energie",
+      "ampel": {"gruen": 60, "gelb": 30},
+      "interpretation_gruen": "Hoher Anteil erneuerbarer Energie; gute Dekarbonisierung der Energieversorgung.",
+      "interpretation_gelb": "Mittlerer Anteil; Ausbaupotenzial vorhanden.",
+      "interpretation_rot": "Niedriger Anteil; Umstieg auf erneuerbare Energien prioritaer empfohlen."
+    },
+    "reduction_target_percent": {
+      "p10": 15, "p25": 25, "p50": 38, "p75": 50, "p90": 65,
+      "unit": "%",
+      "label": "THG-Reduktionsziel (Brutto)",
+      "ampel": {"gruen": 45, "gelb": 25},
+      "interpretation_gruen": "Ambitioniertes Reduktionsziel; kompatibel mit 1,5-Grad-Pfad.",
+      "interpretation_gelb": "Moderates Ziel; Anpassung an SBTi-Anforderungen empfohlen.",
+      "interpretation_rot": "Wenig ambitioniertes Ziel; erhoehtes Reputations- und Regulierungsrisiko."
+    },
+    "assets_at_physical_risk_percent": {
+      "p10": 2, "p25": 4, "p50": 7, "p75": 13, "p90": 22,
+      "unit": "%",
+      "label": "Anteil Vermoegenswerte mit physischem Klimarisiko",
+      "ampel": {"gruen": 6, "gelb": 15},
+      "interpretation_gruen": "Geringer Anteil risikoexponierter Vermoegenswerte; robustes Portfolio.",
+      "interpretation_gelb": "Mittleres Risikoniveau; Szenarioanalysen empfohlen.",
+      "interpretation_rot": "Hoher Anteil exponierter Assets; unmittelbarer Handlungsbedarf."
+    },
+    "financed_emissions_share_scope3": {
+      "p10": 70, "p25": 80, "p50": 87, "p75": 93, "p90": 98,
+      "unit": "%",
+      "label": "Anteil finanzierter Emissionen (Kat. 15) an Scope 3",
+      "note": "Hoher Anteil typisch fuer Finanzinstitute; Kernhebel ist Portfolioausrichtung."
+    },
+    "internal_carbon_price_eur": {
+      "p10": 10, "p25": 30, "p50": 55, "p75": 90, "p90": 150,
+      "unit": "EUR/tCO2e",
+      "label": "Interner CO2-Preis",
+      "ampel": {"gruen": 75, "gelb": 35},
+      "interpretation_gruen": "Hoher interner CO2-Preis; starkes Signal fuer Investitionssteuerung.",
+      "interpretation_gelb": "Moderater Preis; Wirkung auf Kreditvergabe begrenzt.",
+      "interpretation_rot": "Niedriger Preis; Investitionssteuerungswirkung gering."
+    },
+    "energy_intensity_mwh_per_mio_eur": {
+      "p10": 40, "p25": 65, "p50": 100, "p75": 160, "p90": 250,
+      "unit": "MWh/Mio. EUR",
+      "label": "Energieintensitaet je Nettoumsatz",
+      "ampel": {"gruen": 80, "gelb": 140}
+    },
+    "net_zero_year": {
+      "p10": 2055, "p25": 2050, "p50": 2045, "p75": 2040, "p90": 2035,
+      "unit": "Jahr",
+      "label": "Netto-Null-Zieljahr",
+      "ampel_note": "Frueher = ambitionierter; p75/p90 als Referenz fuer Fuehrungsrolle."
+    },
+
+    "_section_E2": "ESRS E2 Umweltverschmutzung",
+
+    "air_emissions_nox_kg": {
+      "p10": 40, "p25": 80, "p50": 130, "p75": 220, "p90": 380,
+      "unit": "kg",
+      "label": "NOx-Emissionen (Luft)",
+      "ampel": {"gruen": 100, "gelb": 200},
+      "interpretation_gruen": "Geringe NOx-Emissionen; Buerogebaeude gut optimiert.",
+      "interpretation_gelb": "Mittleres Niveau; Heizungsoptimierung und Fuhrpark pruefen.",
+      "interpretation_rot": "Hohe Luftemissionen; Emissionsminderungsmassnahmen prioritaer."
+    },
+    "hazardous_waste_tonnes": {
+      "p10": 0.2, "p25": 0.5, "p50": 1.0, "p75": 2.0, "p90": 4.0,
+      "unit": "t",
+      "label": "Gefaehrliche Abfaelle",
+      "ampel": {"gruen": 0.6, "gelb": 1.5},
+      "interpretation_gruen": "Geringes Gefahr-Abfallaufkommen; gutes Chemikalienmanagement.",
+      "interpretation_gelb": "Mittleres Aufkommen; Substitution gefaehrlicher Stoffe pruefen.",
+      "interpretation_rot": "Hohes Gefahr-Abfallaufkommen; Handlungsbedarf bei Substitution und Entsorgungslogistik."
+    },
+
+    "_section_E3": "ESRS E3 Wasser",
+
+    "water_intensity_m3_per_fte": {
+      "p10": 4, "p25": 7, "p50": 10, "p75": 16, "p90": 25,
+      "unit": "m3/FTE",
+      "label": "Wasserverbrauch je Mitarbeitenden",
+      "ampel": {"gruen": 8, "gelb": 15},
+      "interpretation_gruen": "Effizienter Wasserverbrauch im Buerogebaeude.",
+      "interpretation_gelb": "Leicht erhoehter Verbrauch; Sanitaeroptimierung und Sensibilisierung empfohlen.",
+      "interpretation_rot": "Hoher Wasserverbrauch; Ursachenanalyse und Sparmassnahmen erforderlich."
+    },
+    "water_stress_area_withdrawal_percent": {
+      "p10": 0, "p25": 1, "p50": 3, "p75": 8, "p90": 18,
+      "unit": "%",
+      "label": "Wasserentnahme in Stressgebieten",
+      "ampel": {"gruen": 5, "gelb": 12},
+      "interpretation_gruen": "Kaum Exposition in wassergestressten Gebieten.",
+      "interpretation_gelb": "Moderate Exposition; Risikoanalyse fuer Standorte empfohlen.",
+      "interpretation_rot": "Signifikante Entnahme in Stressgebieten; Wasserrisikomanagement erforderlich."
+    },
+
+    "_section_E5": "ESRS E5 Ressourcen",
+
+    "recycling_rate_percent": {
+      "p10": 35, "p25": 50, "p50": 65, "p75": 78, "p90": 90,
+      "unit": "%",
+      "label": "Recyclingquote",
+      "ampel": {"gruen": 70, "gelb": 50},
+      "interpretation_gruen": "Hohe Recyclingquote; vorbildliches Abfallmanagement.",
+      "interpretation_gelb": "Mittlere Quote; Trennsysteme und Mitarbeitersensibilisierung ausbauen.",
+      "interpretation_rot": "Niedrige Recyclingquote; strukturiertes Abfallvermeidungsprogramm notwendig."
+    },
+    "paper_consumption_kg_per_fte": {
+      "p10": 8, "p25": 14, "p50": 22, "p75": 35, "p90": 55,
+      "unit": "kg/FTE",
+      "label": "Papierverbrauch je Mitarbeitenden",
+      "ampel": {"gruen": 15, "gelb": 30},
+      "interpretation_gruen": "Geringer Papierverbrauch; digitale Prozesse gut etabliert.",
+      "interpretation_gelb": "Mittlerer Verbrauch; Digitalisierungspotenzial vorhanden.",
+      "interpretation_rot": "Hoher Papierverbrauch; Digitalisierungsoffensive und Druckrichtlinien empfohlen."
+    },
+
+    "_section_S1": "ESRS S1 Eigene Belegschaft",
+
+    "gender_pay_gap_percent": {
+      "p10": 4, "p25": 7, "p50": 12, "p75": 18, "p90": 26,
+      "unit": "%",
+      "label": "Gender Pay Gap (bereinigt)",
+      "ampel": {"gruen": 8, "gelb": 16},
+      "interpretation_gruen": "Geringer Gender Pay Gap; gute Gleichstellungspraxis im Vergleich zum Sektor.",
+      "interpretation_gelb": "Moderater Gap; Lohnanalyse und Massnahmen zur Gleichstellung empfohlen.",
+      "interpretation_rot": "Erheblicher Gender Pay Gap; strukturelle Lohnueberpruefung und Massnahmenplan erforderlich. Regulatorisches Risiko (EU Pay Transparency Directive)."
+    },
+    "injury_rate_per_1000_fte": {
+      "p10": 0.5, "p25": 1.2, "p50": 2.5, "p75": 4.5, "p90": 8.0,
+      "unit": "Faelle/1000 FTE",
+      "label": "Arbeitsbezogene Verletzungsrate",
+      "ampel": {"gruen": 1.5, "gelb": 4.0},
+      "interpretation_gruen": "Niedrige Verletzungsrate; effektives Arbeitssicherheitssystem.",
+      "interpretation_gelb": "Mittleres Niveau; Gefaehrdungsbeurteilungen und Praevention staerken.",
+      "interpretation_rot": "Erhoehte Verletzungsrate; sofortiger Handlungsbedarf bei Arbeitssicherheit."
+    },
+    "training_hours_per_fte": {
+      "p10": 12, "p25": 20, "p50": 28, "p75": 40, "p90": 60,
+      "unit": "h/FTE",
+      "label": "Schulungsstunden je Mitarbeitenden",
+      "ampel": {"gruen": 32, "gelb": 18},
+      "interpretation_gruen": "Ueberdurchschnittliches Schulungsangebot; gute Mitarbeiterentwicklung.",
+      "interpretation_gelb": "Moderates Niveau; Schulungsplanung systematisieren.",
+      "interpretation_rot": "Unterdurchschnittliche Weiterbildung; Kompetenzentwicklung und Mitarbeiterbindung gefaehrdet."
+    },
+    "female_leadership_percent": {
+      "p10": 12, "p25": 20, "p50": 28, "p75": 38, "p90": 50,
+      "unit": "%",
+      "label": "Frauenanteil in Fuehrungspositionen",
+      "ampel": {"gruen": 35, "gelb": 20},
+      "interpretation_gruen": "Guter Frauenanteil in Fuehrung; Diversity-Strategie wirksam.",
+      "interpretation_gelb": "Ausbaubedarf; Foerderprogramme fuer Frauen in Fuehrung empfohlen.",
+      "interpretation_rot": "Geringer Frauenanteil; strukturelle Massnahmen und Zielquoten erforderlich."
+    },
+    "collective_bargaining_coverage_percent": {
+      "p10": 50, "p25": 70, "p50": 85, "p75": 95, "p90": 100,
+      "unit": "%",
+      "label": "Tarifbindungsquote",
+      "ampel": {"gruen": 80, "gelb": 60},
+      "interpretation_gruen": "Hohe Tarifbindung; gute kollektive Arbeitnehmervertretung.",
+      "interpretation_gelb": "Moderate Abdeckung; Dialog mit Arbeitnehmervertretungen staerken.",
+      "interpretation_rot": "Geringe Tarifbindung; erhoehtes Risiko fuer Arbeitnehmerrechte und Reputation."
+    },
+
+    "_section_S2": "ESRS S2 Wertschoepfungskette",
+
+    "high_risk_suppliers_percent": {
+      "p10": 2, "p25": 5, "p50": 10, "p75": 18, "p90": 30,
+      "unit": "%",
+      "label": "Anteil Hochrisikolieferanten",
+      "ampel": {"gruen": 7, "gelb": 15},
+      "interpretation_gruen": "Geringer Anteil Hochrisikolieferanten; effektives Lieferantenscreening.",
+      "interpretation_gelb": "Moderates Niveau; Auditfrequenz fuer Risikolieferanten erhoehen.",
+      "interpretation_rot": "Hoher Anteil; strukturiertes Lieferanten-Risikomanagement und LkSG-Compliance pruefen."
+    },
+    "supplier_audits_count": {
+      "p10": 3, "p25": 8, "p50": 15, "p75": 25, "p90": 40,
+      "unit": "Audits/Jahr",
+      "label": "Lieferantenaudits je Jahr",
+      "ampel": {"gruen": 18, "gelb": 8},
+      "interpretation_gruen": "Gute Auditabdeckung; proaktives Lieferkettenmanagement.",
+      "interpretation_gelb": "Moderate Auditfrequenz; Erweiterung auf weitere Risikolieferanten empfohlen.",
+      "interpretation_rot": "Geringe Auditaktivitaet; LkSG-Sorgfaltspflichten gefaehrdet."
+    },
+
+    "_section_S4": "ESRS S4 Verbraucher",
+
+    "customer_complaints_per_1000": {
+      "p10": 1.5, "p25": 3.0, "p50": 5.0, "p75": 8.0, "p90": 14.0,
+      "unit": "Beschwerden/1000 Kunden",
+      "label": "Kundenbeschwerden je 1.000 Kunden",
+      "ampel": {"gruen": 4.0, "gelb": 7.0},
+      "interpretation_gruen": "Geringe Beschwerdequote; hohe Kundenzufriedenheit und Produktqualitaet.",
+      "interpretation_gelb": "Moderate Beschwerden; Ursachenanalyse und Prozessoptimierung empfohlen.",
+      "interpretation_rot": "Erhoehte Beschwerderate; BaFin-Verbraucherschutzrisiko und Reputationsschaden moeglich."
+    },
+    "customer_satisfaction_score": {
+      "p10": 58, "p25": 65, "p50": 73, "p75": 80, "p90": 87,
+      "unit": "Punkte (0-100)",
+      "label": "Kundenzufriedenheitsindex",
+      "ampel": {"gruen": 75, "gelb": 65},
+      "interpretation_gruen": "Hohe Kundenzufriedenheit; starke Kundenbindung.",
+      "interpretation_gelb": "Moderates Niveau; Verbesserungspotenzial bei Service und Produktangebot.",
+      "interpretation_rot": "Niedrige Zufriedenheit; Churn-Risiko und Neukundengewinnung gefaehrdet."
+    },
+
+    "_section_G1": "ESRS G1 Governance",
+
+    "anti_corruption_training_percent": {
+      "p10": 65, "p25": 78, "p50": 88, "p75": 95, "p90": 100,
+      "unit": "%",
+      "label": "Antikorruptionstraining-Abdeckung",
+      "ampel": {"gruen": 90, "gelb": 75},
+      "interpretation_gruen": "Hohe Trainingsabdeckung; effektives Compliance-Programm.",
+      "interpretation_gelb": "Moderate Abdeckung; Pflichttraining fuer alle Mitarbeitenden staerken.",
+      "interpretation_rot": "Geringe Abdeckung; BaFin-Compliance-Risiko und Reputationsrisiko."
+    },
+    "board_independence_percent": {
+      "p10": 33, "p25": 44, "p50": 55, "p75": 67, "p90": 80,
+      "unit": "%",
+      "label": "Unabhaengigkeit des Aufsichtsrats",
+      "ampel": {"gruen": 60, "gelb": 40},
+      "interpretation_gruen": "Gute Unabhaengigkeit; effektive Governance-Struktur.",
+      "interpretation_gelb": "Moderate Unabhaengigkeit; Beziehungskonflikte kritisch pruefen.",
+      "interpretation_rot": "Geringe Unabhaengigkeit; Governance-Reform und Besetzungsueberpruefung empfohlen."
+    },
+    "women_on_board_percent": {
+      "p10": 10, "p25": 20, "p50": 30, "p75": 40, "p90": 50,
+      "unit": "%",
+      "label": "Frauenanteil im Aufsichtsrat",
+      "ampel": {"gruen": 33, "gelb": 20},
+      "interpretation_gruen": "Guter Frauenanteil; Diversity im Aufsichtsrat gelebt.",
+      "interpretation_gelb": "Ausbaubedarf; Nachfolgeplanung mit Diversity-Kriterien staerken.",
+      "interpretation_rot": "Geringer Frauenanteil; gesetzliche Mindestquote (30% bei boersennotierten Unternehmen) pruefen."
+    }
+  },
+  "rag_thresholds_note": "ampel.gruen = Schwellenwert fuer GRUEN-Status. ampel.gelb = Schwellenwert fuer GELB. Unterhalb gelb = ROT. hoeher_besser-Richtung je KPI beachten."
+}

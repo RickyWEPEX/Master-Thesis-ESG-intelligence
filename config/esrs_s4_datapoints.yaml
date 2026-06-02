@@ -1,0 +1,73 @@
+# ===========================================================================
+# ESRS S4 (Verbraucher und Endnutzer) - Datenpunktkatalog
+# ---------------------------------------------------------------------------
+# Quelle: Amended ESRS Exposure Draft, Juli 2025 (EFRAG), DR S4-1 bis S4-5
+# ===========================================================================
+
+metadata:
+  standard: "ESRS S4"
+  title: "Consumers and End-users / Verbraucher und Endnutzer"
+  source: "Amended ESRS Exposure Draft (July 2025), EFRAG"
+  catalog_version: "0.1.0"
+
+datapoints:
+
+  - id: S4-DP-001
+    dr: S4-4
+    name: "Customer complaints per 1,000 customers"
+    name_de: "Kundenbeschwerden je 1.000 Kunden"
+    category: customer_relations
+    datatype: numeric
+    unit: Anzahl/1000
+    mandatory: true
+    value_path: consumers.customer_complaints_per_1000
+
+  - id: S4-DP-002
+    dr: S4-4
+    name: "Data breaches"
+    name_de: "Datenschutzverletzungen"
+    category: data_privacy
+    datatype: integer
+    unit: Anzahl
+    mandatory: true
+    value_path: consumers.data_breaches_count
+
+  - id: S4-DP-003
+    dr: S4-4
+    name: "Product mis-selling cases"
+    name_de: "Faelle von Falschverkauf"
+    category: product_integrity
+    datatype: integer
+    unit: Anzahl
+    mandatory: true
+    value_path: consumers.product_mis_selling_cases_count
+
+  - id: S4-DP-004
+    dr: S4-4
+    name: "Customer satisfaction score"
+    name_de: "Kundenzufriedenheitsindex"
+    category: customer_relations
+    datatype: numeric
+    unit: Punkte (0-100)
+    mandatory: false
+    value_path: consumers.customer_satisfaction_score
+
+  - id: S4-DP-005
+    dr: S4-2
+    name: "Vulnerable customer share"
+    name_de: "Anteil schutzbeduerftiger Kunden"
+    category: social_inclusion
+    datatype: percentage
+    unit: "%"
+    mandatory: true
+    value_path: consumers.vulnerable_customer_share_percent
+
+  - id: S4-DP-006
+    dr: S4-2
+    name: "Financial inclusion products"
+    name_de: "Produkte fuer finanzielle Inklusion"
+    category: social_inclusion
+    datatype: integer
+    unit: Anzahl
+    mandatory: false
+    value_path: consumers.financial_inclusion_products_count

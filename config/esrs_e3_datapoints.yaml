@@ -1,0 +1,73 @@
+# ===========================================================================
+# ESRS E3 (Wasser- und Meeresressourcen) - Datenpunktkatalog
+# ---------------------------------------------------------------------------
+# Quelle: Amended ESRS Exposure Draft, Juli 2025 (EFRAG), DR E3-1 bis E3-4
+# ===========================================================================
+
+metadata:
+  standard: "ESRS E3"
+  title: "Water and Marine Resources / Wasser und Meeresressourcen"
+  source: "Amended ESRS Exposure Draft (July 2025), EFRAG"
+  catalog_version: "0.1.0"
+
+datapoints:
+
+  - id: E3-DP-001
+    dr: E3-4
+    name: "Total water consumption"
+    name_de: "Gesamtwasserverbrauch"
+    category: water_use
+    datatype: numeric
+    unit: m3
+    mandatory: true
+    value_path: water.total_consumption_m3
+
+  - id: E3-DP-002
+    dr: E3-4
+    name: "Total water withdrawal"
+    name_de: "Gesamtwasserentnahme"
+    category: water_use
+    datatype: numeric
+    unit: m3
+    mandatory: true
+    value_path: water.total_withdrawal_m3
+
+  - id: E3-DP-003
+    dr: E3-4
+    name: "Recycled and reused water"
+    name_de: "Wiederverwendetes Wasser"
+    category: water_use
+    datatype: numeric
+    unit: m3
+    mandatory: false
+    value_path: water.recycled_water_m3
+
+  - id: E3-DP-004
+    dr: E3-4
+    name: "Water intensity per FTE"
+    name_de: "Wasserintensitaet je Mitarbeiter"
+    category: water_intensity
+    datatype: numeric
+    unit: m3/FTE
+    mandatory: false
+    value_path: water.water_intensity_m3_per_fte
+
+  - id: E3-DP-005
+    dr: E3-4
+    name: "Water withdrawal in water-stressed areas"
+    name_de: "Wasserentnahme in Stressgebieten"
+    category: water_stress
+    datatype: percentage
+    unit: "%"
+    mandatory: true
+    value_path: water.water_stress_area_withdrawal_percent
+
+  - id: E3-DP-006
+    dr: E3-4
+    name: "Financed water-intensive exposure"
+    name_de: "Finanziertes wasserintensives Engagement (Portfolio)"
+    category: financed
+    datatype: percentage
+    unit: "%"
+    mandatory: false
+    value_path: water.financed_water_intensive_exposure_percent

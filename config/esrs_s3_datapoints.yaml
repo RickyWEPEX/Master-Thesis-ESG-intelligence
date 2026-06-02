@@ -1,0 +1,63 @@
+# ===========================================================================
+# ESRS S3 (Betroffene Gemeinschaften) - Datenpunktkatalog
+# ---------------------------------------------------------------------------
+# Quelle: Amended ESRS Exposure Draft, Juli 2025 (EFRAG), DR S3-1 bis S3-5
+# ===========================================================================
+
+metadata:
+  standard: "ESRS S3"
+  title: "Affected Communities / Betroffene Gemeinschaften"
+  source: "Amended ESRS Exposure Draft (July 2025), EFRAG"
+  catalog_version: "0.1.0"
+
+datapoints:
+
+  - id: S3-DP-001
+    dr: S3-4
+    name: "Community investment volume"
+    name_de: "Gemeinschaftsinvestitionen"
+    category: community_engagement
+    datatype: numeric
+    unit: Mio. EUR
+    mandatory: true
+    value_path: communities.community_investment_mio_eur
+
+  - id: S3-DP-002
+    dr: S3-4
+    name: "Community complaints received"
+    name_de: "Beschwerden von Gemeinschaften"
+    category: grievance
+    datatype: integer
+    unit: Anzahl
+    mandatory: true
+    value_path: communities.complaints_received_count
+
+  - id: S3-DP-003
+    dr: S3-4
+    name: "Community complaints resolved"
+    name_de: "Geloeste Gemeinschaftsbeschwerden"
+    category: grievance
+    datatype: percentage
+    unit: "%"
+    mandatory: false
+    value_path: communities.complaints_resolved_percent
+
+  - id: S3-DP-004
+    dr: S3-2
+    name: "Local procurement share"
+    name_de: "Anteil lokaler Beschaffung"
+    category: community_engagement
+    datatype: percentage
+    unit: "%"
+    mandatory: false
+    value_path: communities.local_procurement_percent
+
+  - id: S3-DP-005
+    dr: S3-4
+    name: "Social finance volume"
+    name_de: "Sozialfinanzierungsvolumen"
+    category: community_finance
+    datatype: numeric
+    unit: Mio. EUR
+    mandatory: false
+    value_path: communities.social_finance_volume_mio_eur

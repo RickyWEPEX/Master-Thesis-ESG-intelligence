@@ -1,0 +1,93 @@
+# ===========================================================================
+# ESRS E2 (Umweltverschmutzung) - Datenpunktkatalog
+# ---------------------------------------------------------------------------
+# Quelle: Amended ESRS Exposure Draft, Juli 2025 (EFRAG), DR E2-1 bis E2-6
+# ===========================================================================
+
+metadata:
+  standard: "ESRS E2"
+  title: "Pollution / Umweltverschmutzung"
+  source: "Amended ESRS Exposure Draft (July 2025), EFRAG"
+  catalog_version: "0.1.0"
+
+datapoints:
+
+  - id: E2-DP-001
+    dr: E2-4
+    name: "NOx emissions (air)"
+    name_de: "Luftemissionen Stickoxide (NOx)"
+    category: air_emissions
+    datatype: numeric
+    unit: kg
+    mandatory: true
+    value_path: pollution.air_emissions_nox_kg
+
+  - id: E2-DP-002
+    dr: E2-4
+    name: "SOx emissions (air)"
+    name_de: "Luftemissionen Schwefeloxide (SOx)"
+    category: air_emissions
+    datatype: numeric
+    unit: kg
+    mandatory: true
+    value_path: pollution.air_emissions_sox_kg
+
+  - id: E2-DP-003
+    dr: E2-4
+    name: "PM2.5 emissions (air)"
+    name_de: "Feinstaubemissionen (PM2.5)"
+    category: air_emissions
+    datatype: numeric
+    unit: kg
+    mandatory: false
+    value_path: pollution.air_emissions_pm25_kg
+
+  - id: E2-DP-004
+    dr: E2-5
+    name: "Wastewater discharged"
+    name_de: "Abwassereinleitung"
+    category: water_pollution
+    datatype: numeric
+    unit: m3
+    mandatory: true
+    value_path: pollution.wastewater_discharged_m3
+
+  - id: E2-DP-005
+    dr: E2-6
+    name: "Hazardous waste generated"
+    name_de: "Gefaehrliche Abfaelle erzeugt"
+    category: waste
+    datatype: numeric
+    unit: t
+    mandatory: true
+    value_path: pollution.hazardous_waste_tonnes
+
+  - id: E2-DP-006
+    dr: E2-6
+    name: "Non-hazardous waste generated"
+    name_de: "Nicht gefaehrliche Abfaelle erzeugt"
+    category: waste
+    datatype: numeric
+    unit: t
+    mandatory: true
+    value_path: pollution.non_hazardous_waste_tonnes
+
+  - id: E2-DP-007
+    dr: E2-4
+    name: "Pollution incidents"
+    name_de: "Verschmutzungsvorfaelle"
+    category: incidents
+    datatype: integer
+    unit: Anzahl
+    mandatory: true
+    value_path: pollution.pollution_incidents_count
+
+  - id: E2-DP-008
+    dr: E2-6
+    name: "Financed pollution exposure"
+    name_de: "Finanziertes Verschmutzungsrisiko (Portfolio)"
+    category: financed
+    datatype: percentage
+    unit: "%"
+    mandatory: false
+    value_path: pollution.financed_pollution_exposure_percent
