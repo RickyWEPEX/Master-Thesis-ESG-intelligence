@@ -15,7 +15,6 @@ htmlcov/
 # Generierte Outputs (Audit-Logs/Reports werden zur Laufzeit erzeugt)
 output/reports/*
 output/audit_logs/*
-output/evaluation_results.json
 !output/reports/.gitkeep
 !output/audit_logs/.gitkeep
 
