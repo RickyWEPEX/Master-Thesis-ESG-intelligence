@@ -77,7 +77,7 @@ with st.sidebar:
     if backend == "claude":
         st.info(
             "KI-Extraktion aktiv: ~34 API-Calls fuer Datenpunkt-Extraktion aus Freitext "
-            "(ca. 120s Laufzeit).\n\n"
+            "(ca. 300s Laufzeit).\n\n"
             "Alle Bewertungen (Assessment, Sektorbenchmarks, Lagebericht) "
             "bleiben deterministisch — kein LLM."
         )
@@ -952,7 +952,7 @@ else:
 5. **Reporting & Output** — ESRS-Nachhaltigkeitsbericht alle Standards (Markdown + PDF), Streamlit-Demo
 
 **Hypothesen-Nachweis:**
-- H1a: ~0.003s (deterministisch) | ~120s (claude-backend)
+- H1a: ~0.003s (deterministisch) | ~300s (claude-backend)
 - H2a: F1=1.0 | H2b: 100% | H2d: CV-F1=0.853
 - H3a: 10 neue Datenpunkte via YAML (kein Code)
 """)
