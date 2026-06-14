@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-06-02T14:56:35.347572+00:00",
+  "generated_at": "2026-06-14T10:18:39.760071+00:00",
   "backend": "deterministic",
-  "H1a_runtime_seconds_clean": 0.128,
+  "H1a_runtime_seconds_clean": 0.03,
   "H2a_extraction": {
     "true_positives": 34,
     "false_positives": 0,
@@ -80,7 +80,7 @@
   },
   "H3a_neue_datenpunkte_via_yaml": 10,
   "H3a_gesamte_datenpunkte": 105,
-  "H3b_wiederverwendungsrate_pct": 77.3,
+  "H3b_wiederverwendungsrate_pct": 66.7,
   "assessment_gesamtampel": "GELB",
   "audit_chain_valid": true,
   "targets": {
