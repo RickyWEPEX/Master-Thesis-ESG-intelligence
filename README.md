@@ -1,6 +1,6 @@
 # KI-Agenten-Framework fuer ESG-Reporting (CSRD/ESRS)
 
-**Forschungsprototyp** — Masterarbeit Maximilian Weiss, Frankfurt School of Finance & Management, 2025/2026.
+**Forschungsprototyp** — Masterarbeit Ricky Martin Weiss, Frankfurt School of Finance & Management, 2026.
 Design Science Research: Multi-Agenten-Framework fuer CSRD/ESRS-konformes ESG-Reporting in Finanzinstituten.
 
 > Wissenschaftliches Artefakt, **kein** Produktivsystem. Alle Daten sind synthetisch (DSGVO).
