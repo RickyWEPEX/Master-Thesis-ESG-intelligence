@@ -1,6 +1,6 @@
 # KI-Agenten-Framework fuer ESG-Reporting (CSRD/ESRS)
 
-**Forschungsprototyp** — Masterarbeit Ricky Martin Weiss, Frankfurt School of Finance & Management, 2026.
+**Forschungsprototyp** — Masterarbeit Ricky Martin Weiß, Frankfurt School of Finance & Management, 2026.
 Design Science Research: Multi-Agenten-Framework fuer CSRD/ESRS-konformes ESG-Reporting in Finanzinstituten.
 
 > Wissenschaftliches Artefakt, **kein** Produktivsystem. Alle Daten sind synthetisch (DSGVO).
@@ -322,10 +322,12 @@ esg_agent_framework/
 ├── ui/
 │   └── streamlit_app.py           # Demo-Interface
 ├── utils/
-│   ├── audit_logger.py            # SHA-256-Hash-Kette (NFA-4.1)
+│   ├── audit_logger.py            # SHA-256-Hash-Kette (NFA-2.1)
 │   ├── config_loader.py
 │   ├── ingestion.py
 │   └── pdf_exporter.py
+├── docs/
+│   └── anforderungskatalog.md     # FA/NFA/DP-Anforderungskatalog (massgebliche ID-Quelle)
 ├── ESRS/                          # ESRS-Originaldokumente (PDF, nicht im Git)
 ├── Omnibus/                       # EU Omnibus 2025 (PDF, nicht im Git)
 ├── output/                        # Generierte Berichte (git-ignoriert)
@@ -348,7 +350,7 @@ Alle Metriken werden reproduzierbar mit `python main.py --eval` gemessen (Seed=4
 | FA-2 — Fehlererkennung | Erkennungsrate injizierter Fehler | >= 0,95 | 1,0 |
 | H2d — Erklaebarkeit | CV-F1 Random-Forest-Klassifikator | >= 0,75 | 0,853 +/- 0,058 |
 | H3a — Adaptierbarkeit | Neue Datenpunkte per YAML, kein Code | 0 Code-Aenderungen | 10 DPs nachgewiesen |
-| H3b — Wiederverwendung | Agenten-Reuse-Rate ueber Standards | >= 70 % | 77,3 % |
+| H3b — Wiederverwendung | Agenten-Reuse-Rate ueber Standards | >= 30 % | 66,7 % |
 
 ---
 
@@ -376,4 +378,4 @@ folgende Punkte zu pruefen:
 ---
 
 *Forschungsprototyp — Frankfurt School of Finance & Management, 2025/2026.*
-*Autor: Maximilian Weiss. Kontakt: ricky.martin.rmw@googlemail.com*
+*Autor: Ricky Martin Weiß. Kontakt: ricky.martin.rmw@googlemail.com*

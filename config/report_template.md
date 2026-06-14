@@ -5,7 +5,7 @@
 **Berichtsjahr:** {reporting_year}
 **Erstellt am:** {generated_at}
 **Rahmenwerk:** CSRD / ESRS (Amended Exposure Drafts, Juli 2025) | Alle wesentlichen Standards
-**Hinweis:** KI-generierter Prototyp-Bericht (Weiss, Frankfurt School, 2025/2026). Synthetische Daten. Alle Angaben vor Verwendung fachlich zu pruefen (CSRD Art. 34).
+**Hinweis:** KI-generierter Prototyp-Bericht (Weiß, Frankfurt School, 2025/2026). Synthetische Daten. Alle Angaben vor Verwendung fachlich zu pruefen (CSRD Art. 34).
 
 ---
 

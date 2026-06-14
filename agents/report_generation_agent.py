@@ -2,7 +2,7 @@
 
 Erstellt vollstaendige ESRS-Disclosure-Berichte (Markdown + Lagebericht-Interpretation, alle Standards)
 aus validierten Daten und AssessmentErgebnis. Jede Sektion erhaelt narrative Interpretation.
-Narrative Abschnitte koennen via LLM erzeugt werden (NFA-1.3 / FA-4.2).
+Narrative Abschnitte koennen via LLM erzeugt werden (NFA-1.3 / FA-5.4).
 """
 from __future__ import annotations
 
@@ -329,7 +329,7 @@ class ReportGenerationAgent(BaseAgent):
             "und den European Sustainability Reporting Standards (ESRS, Amended Exposure "
             "Drafts Juli 2025). Grundlage ist die doppelte Wesentlichkeitsanalyse nach "
             "ESRS 1 (IRO-1), die bestimmt, zu welchen Themen Angaben zu machen sind. "
-            "Die Erstellung erfolgte durch ein KI-Agenten-Framework (Weiss, Frankfurt "
+            "Die Erstellung erfolgte durch ein KI-Agenten-Framework (Weiß, Frankfurt "
             "School, 2025/2026); alle Inhalte sind vor produktivem Einsatz fachlich zu pruefen."
         )
         lines.append("")

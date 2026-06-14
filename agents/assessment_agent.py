@@ -4,7 +4,7 @@ Bewertet extrahierte ESRS-E1-KPIs gegen Sektorbenchmarks, berechnet abgeleitete
 Kennzahlen und generiert Interpretationstexte fuer den ESG-Lagebericht.
 
 Gemaess Thesis-Anforderungen:
-- FA-4.4: Datenherkunft und Generierungslogik dokumentiert (Explainability)
+- FA-5.5: Datenherkunft und Generierungslogik dokumentiert (Explainability)
 - NFA-1.1: Nachvollziehbare Begruendungen fuer Fachexperten
 - H2d: SHAP-/Benchmarking-basierte Nachvollziehbarkeit
 - Benchmark-Quelle: data/benchmarks/sector_benchmarks.json

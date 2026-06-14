@@ -1,6 +1,6 @@
 # Architektur — KI-Agenten-Framework fuer ESG-Reporting
 
-**Forschungsprototyp** — Masterarbeit Ricky Weiss, Frankfurt School of Finance & Management, 2025/2026.
+**Forschungsprototyp** — Masterarbeit Ricky Martin Weiß, Frankfurt School of Finance & Management, 2025/2026.
 Design Science Research (DSR) nach Peffers et al. (2007).
 
 ---
@@ -14,7 +14,7 @@ Design Science Research (DSR) nach Peffers et al. (2007).
 5. [ESRS-Abdeckung](#5-esrs-abdeckung)
 6. [Konfigurationsarchitektur (H3-Nachweis)](#6-konfigurationsarchitektur-h3-nachweis)
 7. [Explainability-Architektur (H2d)](#7-explainability-architektur-h2d)
-8. [Audit-Trail und Governance (NFA-4.1)](#8-audit-trail-und-governance-nfa-41)
+8. [Audit-Trail und Governance (NFA-2)](#8-audit-trail-und-governance-nfa-2)
 9. [Design-Entscheidungen](#9-design-entscheidungen)
 
 ---
@@ -32,7 +32,7 @@ Finanzinstitute (Sparkassen, Genossenschaftsbanken, mittelgrossere Banken).
 | Konfiguration statt Code | Datenpunkte und Regeln in YAML; kein Code bei Erweiterung (H3a) |
 | Reproduzierbarkeit | Deterministisches Backend: gleicher Input = identischer Output (QA-3.1) |
 | Trennbarkeit | Jeder Agent hat genau eine Verantwortlichkeit (Single Responsibility) |
-| Nachvollziehbarkeit | Alle Aktionen im SHA-256-verketteten Audit-Trail (NFA-4.1) |
+| Nachvollziehbarkeit | Alle Aktionen im SHA-256-verketteten Audit-Trail (NFA-2.1) |
 | DSGVO | Nur synthetische Daten; LLM-Backend opt-in |
 
 ---
@@ -380,7 +380,7 @@ Random-Forest-Klassifikator auf 10 quantitativen ESRS-E1-Merkmalen:
 
 ---
 
-## 8. Audit-Trail und Governance (NFA-4.1)
+## 8. Audit-Trail und Governance (NFA-2)
 
 `utils/audit_logger.py` implementiert einen append-only, SHA-256-verketteten Audit-Trail:
 
@@ -396,7 +396,7 @@ Eintrag N:
 
 - `AuditLogger.verify()` prueft die gesamte Hash-Kette auf Intaktheit
 - Alle Agenten schreiben ueber `self._log(action, details)` in denselben Trail
-- Ergebnis: manipulationssicheres Protokoll (NFA-4.1 / FA-7.1)
+- Ergebnis: manipulationssicheres Protokoll (NFA-2.1)
 
 ---
 
@@ -406,7 +406,7 @@ Eintrag N:
 
 | Aspekt | Monolith | Multi-Agenten-Framework |
 |--------|----------|------------------------|
-| Wiederverwendbarkeit | gering | hoch (H3b: 77,3 % Reuse-Rate) |
+| Wiederverwendbarkeit | gering | hoch (H3b: 66,7 % Voll-Reuse-Rate) |
 | Erweiterbarkeit | Eingriff in Kerncode | Neuer Agent ohne Aenderung bestehender Agenten |
 | Testbarkeit | schwer zu isolieren | Jeder Agent einzeln testbar |
 | Nachvollziehbarkeit | Black Box | Audit-Trail pro Agent-Aktion |
@@ -438,4 +438,4 @@ die Kernhypothesen H1–H3, nicht den vollstaendigen Produktivbetrieb.
 ---
 
 *Forschungsprototyp — Frankfurt School of Finance & Management, 2025/2026.*
-*Autor: Ricky Weiss. Kontakt: ricky.martin.rmw@googlemail.com*
+*Autor: Ricky Martin Weiß. Kontakt: ricky.martin.rmw@googlemail.com*

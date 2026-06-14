@@ -3,7 +3,7 @@
 ## Was ist das?
 Forschungsprototyp einer Masterarbeit (Frankfurt School, Design Science Research):
 Multi-Agenten-Framework für CSRD/ESRS-E1-konformes ESG-Reporting in Finanzinstituten.
-Autor: Maximilian Weiss. Abgabe ~Juli/August 2026.
+Autor: Ricky Martin Weiß. Abgabe: 15. Juni 2026.
 
 ## Leitprinzipien (wichtig bei jeder Änderung)
 - **Evaluierbarkeit zuerst.** Jede Funktion muss gegen die Hypothesen H1 (Effizienz),
@@ -35,7 +35,7 @@ Autor: Maximilian Weiss. Abgabe ~Juli/August 2026.
 - `evaluation/metrics.py` + `run_evaluation.py` — H2a/H2b/FA-2/H2d
 - `evaluation/ml_classifier.py` — RandomForest + SHAP (H2d); Seed=42
 - `data/ground_truth/*.json` — Gold Standard (Extraktion + erwartete Validierungstreffer)
-- `utils/audit_logger.py` — append-only Hash-Kette (NFA-4.1)
+- `utils/audit_logger.py` — append-only Hash-Kette (NFA-2.1)
 - `utils/pdf_exporter.py` — ReportLab-PDF-Export (d)
 - `utils/ingestion.py` — Schicht-2-Ingestion: JSON/CSV/Text-Multi-Source (FA-1.1/FA-1.2)
 - `agents/assessment_agent.py` — Schicht-4-Assessment: KPI-Bewertung, Sektorbenchmarks, Lagebericht-Interpretation
@@ -48,7 +48,7 @@ Autor: Maximilian Weiss. Abgabe ~Juli/August 2026.
 - 5-Schichten-Architektur vollstaendig implementiert (Ingestion, Extraktion, Validierung, Assessment, Report).
 - ESG-Lagebericht mit KPI-Interpretation, Sektorbenchmarks, Ampelbewertung, Empfehlungen.
 - H3a: 10 neue Datenpunkte via YAML (kein Code) — demonstriert NFA-3.2.
-- H3b: 77.3% Wiederverwendungsrate der Agenten ueber Standards.
+- H3b: 66.7% Voll-Wiederverwendung (4/6 Kern-Agenten ohne Code- oder Config-Aenderung).
 - (e) OFFEN: Baseline-Erhebung manueller Prozess (H1a) aus Experteninterviews
   (ausserhalb des Frameworks; Thesis-Kapitel Evaluation).
 
@@ -56,7 +56,7 @@ Autor: Maximilian Weiss. Abgabe ~Juli/August 2026.
 - H1a Laufzeit: ~0.006 s (deterministisch, 44 DPs) vs. ~120 s (claude-Backend)
 - H2a F1: 1.0 | H2b Vollstaendigkeit: 1.0 | FA-2 Erkennung: 1.0 / FP: 0.0
 - H2d CV-F1: 0.853 +/- 0.058 (RandomForest+SHAP, 500 Samples, Seed=42)
-- H3a: 10 neue DPs via YAML | H3b: 77.3% Wiederverwendung | H3c: YAML+Streamlit
+- H3a: 10 neue DPs via YAML | H3b: 66.7% Voll-Reuse (4/6) | H3c: YAML+Streamlit
 
 ## Konventionen
 - Neue Datenpunkte/Regeln → YAML erweitern, NICHT Code. Danach `--eval` + `pytest`.

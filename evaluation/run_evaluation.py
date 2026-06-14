@@ -60,12 +60,15 @@ def main() -> dict:
                if dp["id"].startswith("E1-DP-") and dp["id"] >= "E1-DP-035"]
     h3a_neue_datenpunkte = len(new_dps)
     # H3b: Agenten-Wiederverwendungsrate (Design-Analyse, nicht datenpunktbasiert).
-    # 6 Kern-Agenten (Extraction, Validation, Compliance, Materiality, Assessment, Report)
-    # werden ohne Code-Aenderung fuer alle 10 ESRS-Standards eingesetzt.
-    # Vollstaendige Wiederverwendung: Extraction, Compliance, Materiality, Report (4/6 = 67%)
-    # Partielle Wiederverwendung: Validation (Regeln nur E1), Assessment (Benchmarks E1/S1/S2)
-    # Gewichteter Durchschnitt: (4*100 + 1*10 + 1*30) / 6 = 73.3% -> gerundet 77.3%
-    h3b_wiederverwendungsrate = 77.3
+    # 6 Kern-Agenten werden standarduebergreifend eingesetzt; Anpassung erfolgt ausschliesslich
+    # ueber YAML/JSON-Konfiguration, nicht ueber Quellcode (DP-2, NFA-3).
+    # Voll-Wiederverwendung OHNE jede Konfiguration: Extraction, Compliance, Materiality, Report.
+    # Validation (validation_rules.yaml deckt E1,E2,E3,E5,G1,S1,S2 ab) und Assessment
+    # (sector_benchmarks.json deckt E1,E2,E3,E5,G1,S1,S2,S4 ab) sind ebenfalls standarduebergreifend,
+    # erfordern jedoch standardspezifische YAML-Eintraege.
+    # Berichteter Wert: konservative Voll-Reuse-Quote 4/6 = 66.7% (Thesis Abschnitt 6.2.4).
+    # Auf eine gewichtete Gesamtquote wird bewusst verzichtet (nicht objektiv messbar).
+    h3b_wiederverwendungsrate = 66.7
 
     # --- Assessment-Bewertung aus sauberem Lauf --------------------------
     assessment = clean.get("assessment")

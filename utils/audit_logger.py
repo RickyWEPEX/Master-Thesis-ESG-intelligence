@@ -1,6 +1,6 @@
 """Append-only Audit-Trail mit Hash-Verkettung.
 
-Erfuellt NFA-4.1 / FA-7.1: Jeder Verarbeitungsschritt wird unveraenderlich
+Erfuellt NFA-2.1: Jeder Verarbeitungsschritt wird unveraenderlich
 protokolliert. Manipulationssicherheit wird ueber eine SHA-256-Hashkette
 gewaehrleistet (jeder Eintrag enthaelt den Hash des Vorgaengers). Eine
 nachtraegliche Aenderung bricht die Kette und ist via verify() erkennbar.

@@ -1,4 +1,4 @@
-"""ESG-Nachhaltigkeitsbericht PDF-Export (NFA-2.2 / FA-4.3).
+"""ESG-Nachhaltigkeitsbericht PDF-Export (FA-5.2).
 
 Erstellt einen vollstaendigen CSRD/ESRS-konformen Nachhaltigkeitsbericht als PDF mit:
 - Doppelter Wesentlichkeitsanalyse (alle 10 ESRS-Standards, ESRS 1 IG 1)
@@ -263,7 +263,7 @@ def build_pdf_bytes(
         leftMargin=2.2 * cm, rightMargin=2.2 * cm,
         topMargin=2 * cm, bottomMargin=2 * cm,
         title="CSRD/ESRS Nachhaltigkeitsbericht",
-        author="KI-Agenten-Framework (Weiss, 2025)",
+        author="KI-Agenten-Framework (Weiß, 2025/2026)",
     )
     S = _styles()
     company = company_data.get("company", {})
@@ -1097,7 +1097,7 @@ def build_pdf_bytes(
     story.append(Spacer(1, 0.3 * cm))
     story.append(Paragraph(
         "Dieser Bericht wurde automatisiert durch ein KI-Agenten-Framework erstellt "
-        "(Weiss, Frankfurt School, 2025/2026). Externe Pruefpflicht nach CSRD Art. 34 bleibt bestehen.",
+        "(Weiß, Frankfurt School, 2025/2026). Externe Pruefpflicht nach CSRD Art. 34 bleibt bestehen.",
         S["small"]
     ))
 
@@ -1206,7 +1206,7 @@ def build_pdf_bytes(
     story.append(HRFlowable(width="100%", thickness=0.5, color=_GREY_LINE))
     story.append(Paragraph(
         f"Erstellt: {datetime.now(timezone.utc).strftime('%Y-%m-%d %H:%M UTC')} | "
-        f"Framework: KI-Agenten ESG v1.0 (Weiss, Frankfurt School, 2025/2026) | "
+        f"Framework: KI-Agenten ESG v1.0 (Weiß, Frankfurt School, 2025/2026) | "
         f"Backend: {backend} | Laufzeit: {elapsed_seconds}s | "
         f"Rahmen: CSRD / ESRS E1-G1 (Amended Exposure Drafts, Juli 2025) / EU AI Act 2024/1689",
         S["small"]

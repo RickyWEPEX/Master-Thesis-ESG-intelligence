@@ -936,7 +936,7 @@ if st.session_state.result is not None:
         )
         st.write(f"Eintraege: {len(orch.audit.entries)} | "
                  f"Kette gueltig: {orch.audit.verify()}")
-        st.caption("Append-only SHA-256-Hash-Kette (NFA-4.1) — Manipulationsschutz.")
+        st.caption("Append-only SHA-256-Hash-Kette (NFA-2.1) — Manipulationsschutz.")
         st.json(orch.audit.entries)
 
 else:
@@ -944,7 +944,7 @@ else:
 
     with st.expander("Ueber diesen Prototyp"):
         st.markdown("""
-**5-Schichten-Architektur** (Weiss et al., 2025):
+**5-Schichten-Architektur** (Weiß et al., 2026):
 1. **Governance & Compliance Layer** — Audit-Trail (SHA-256-Kette), Compliance-Agent
 2. **Data Integration & Management** — Multi-Source Ingestion (JSON/CSV/Text)
 3. **AI/Data Science Processing** — Deterministic + LLM-Extraktion, ML-Klassifikator

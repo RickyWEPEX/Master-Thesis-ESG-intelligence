@@ -3,10 +3,10 @@
 Unterstuetzt heterogene Datenquellen gemaess Thesis-Anforderung FA-1.1/FA-1.2:
   - JSON  (strukturiert, Standard)
   - CSV   (tabellarisch, z.B. Excel-Export)
-  - XBRL  (maschinenlesbares Reporting-Format, ESEF/ESRS-Taxonomie, NFA-5.2)
+  - XBRL  (maschinenlesbares Reporting-Format, ESEF/ESRS-Taxonomie, FA-5.6)
   - Text  (unstrukturiert, via LLM-Extraktion)
 
-Umsetzt NFA-3.2 (konfigurierbar ohne Code-Aenderung) und NFA-4.3 (Audit-Logging).
+Umsetzt NFA-3.2 (konfigurierbar ohne Code-Aenderung) und NFA-2.1 (Audit-Logging).
 """
 from __future__ import annotations
 
@@ -179,7 +179,7 @@ def _ingest_xbrl(path: Path, concept_map: dict[str, str] | None = None) -> dict:
     (lokaler Tag-Name nach '}'). Unterstuetzt sowohl inline-XBRL (iXBRL/XHTML)
     als auch klassische XBRL-Instanzen (.xbrl/.xml).
 
-    Gemaess NFA-5.2 (maschinenlesbares Reporting) und FA-1.1.
+    Gemaess FA-5.6 (maschinenlesbares Reporting) und FA-1.1.
     """
     concept_map = concept_map or XBRL_CONCEPT_MAP
     try:

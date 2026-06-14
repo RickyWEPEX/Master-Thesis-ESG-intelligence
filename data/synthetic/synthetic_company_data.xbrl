@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
   Synthetische XBRL-Instanz (vereinfacht) im Stil der ESRS-Taxonomie (EFRAG).
-  Demonstriert maschinenlesbaren Import gemaess NFA-5.2 / FA-1.1.
+  Demonstriert maschinenlesbaren Import gemaess FA-5.6 / FA-1.1.
   Konzeptnamen folgen der ESRS Set 1 XBRL Taxonomy (lokale Namen).
   Hinweis: synthetische Daten, nur fuer Demonstrationszwecke.
 -->

@@ -1,7 +1,7 @@
 """Orchestrator (UC-01 / FA-5.1).
 
 Zentraler Koordinations-Agent: implementiert die 5-Schichten-Architektur der Thesis
-(Weiss et al., 2025) fuer CSRD/ESRS-konformes ESG-Reporting (alle Standards E1-G1).
+(Weiß et al., 2026) fuer CSRD/ESRS-konformes ESG-Reporting (alle Standards E1-G1).
 
 Workflow: Ingestion (Schicht 2) -> Extraktion (Schicht 3) -> Validierung (Schicht 3)
           -> Compliance (Schicht 1) -> Materialitaet (Schicht 4) -> Assessment (Schicht 4)

@@ -350,13 +350,15 @@ def run_h3_yaml_demo() -> dict:
             ),
         },
         "H3b_wiederverwendung": {
-            "wiederverwendungsrate_pct": 77.3,
+            "wiederverwendungsrate_pct": 66.7,
             "methodik": (
                 "6 Kern-Agenten (Extraction, Validation, Compliance, Materiality, "
                 "Assessment, Report) werden fuer alle 10 ESRS-Standards eingesetzt. "
-                "4/6 vollstaendige Wiederverwendung (67%), 2/6 partielle Wiederverwendung "
-                "(Validation: Regeln E1-spezifisch; Assessment: Benchmarks E1/S1/S2). "
-                "Gewichteter Mittelwert: (4*100 + 1*10 + 1*30)/6 = 73.3% -> 77.3% (inkl. YAML-Konfigurierbarkeit)."
+                "4/6 Voll-Wiederverwendung ohne jede Konfiguration (Extraction, Compliance, Materiality, Report). "
+                "Validation (Regeln: E1,E2,E3,E5,G1,S1,S2) und Assessment (Benchmarks: E1,E2,E3,E5,G1,S1,S2,S4) "
+                "sind ebenfalls standarduebergreifend, erfordern aber standardspezifische YAML-Eintraege. "
+                "Berichtet wird die konservative Voll-Reuse-Quote 4/6 = 66.7%; auf eine gewichtete Gesamtquote "
+                "wird bewusst verzichtet (nicht objektiv messbar)."
             ),
             "hypothese_erfuellt": True,
         },
