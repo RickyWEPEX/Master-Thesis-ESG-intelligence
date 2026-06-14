@@ -49,7 +49,7 @@ class ComplianceResult:
 
 
 class BaseAgent:
-    """Basisklasse: Name + Zugriff auf den gemeinsamen Audit-Trail (FA-5.2)."""
+    """Basisklasse: Name + Zugriff auf den gemeinsamen Audit-Trail (DP-6)."""
 
     name: str = "BaseAgent"
 
